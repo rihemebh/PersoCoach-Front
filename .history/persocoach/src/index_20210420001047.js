@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './Styles/index.css';
-import App from './App';
-
+import './index.css';
+//import App from './App';
+import Mynavbar from './Mynavbar';
 import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Catalog from './Catalogue/catalog';
 //import { NavbarBrand } from 'react-bootstrap';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Mynavbar />
   </React.StrictMode>,
   document.getElementById('root')
 );

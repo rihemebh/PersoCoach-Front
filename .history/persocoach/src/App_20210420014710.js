@@ -1,13 +1,13 @@
-
-import './Styles/App.css';
+import logo from './logo.svg';
+import './App.css';
 
 import {Route,BrowserRouter as Router,Switch} from 'react-router-dom'
-import Catalog from './Catalogue/catalog';
 function App() {
   return (
  <Router>
     <Switch>
-        <Route path="/Coaches" exact="true" component={Catalog}/>
+                 <Route path="/" exact="true" component={home}/>
+                 <Route path="/Coaches" exact="true" component={Category}/>
                  
     </Switch>
  </Router>
