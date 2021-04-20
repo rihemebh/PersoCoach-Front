@@ -26,7 +26,7 @@ export default class Mynavbar extends Component {
           <Nav.Link href="#link" style={mystyle} ></Nav.Link>
         </Nav>
         <Navbar.Brand href="#home" style={{marginRight: "100px" , marginLeft: "100px" }} 
-        className="d-flex justify-content-center" ><img src="11.png" height="95px" width="192px"></img></Navbar.Brand>
+        className="d-flex justify-content-center" ><img src="11.png" height="px" width="192px"></img></Navbar.Brand>
         <Nav className="d-flex justify-content-end" id="basic-navbar-nav">
         <Nav.Link href="#link" style={mystyle}>Community</Nav.Link>
           <Nav.Link href="#link" style={mystyle}>Contact</Nav.Link>

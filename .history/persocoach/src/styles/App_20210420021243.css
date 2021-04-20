@@ -1,0 +1,31 @@
+:root{
+  --blue: #6796E8; 
+  --purple:#C8C9EC; 
+  --lightBlue: #B3C7EA;
+  --lightPurple: #DED8F2;
+  --darkGrey: #707070;
+  --lightGrey:#C7C3C3;
+}
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
+
