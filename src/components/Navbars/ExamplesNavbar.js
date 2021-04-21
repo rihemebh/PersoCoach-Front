@@ -1,27 +1,12 @@
-/*!
 
-=========================================================
-* Paper Kit React - v1.3.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-kit-react
-
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/paper-kit-react/blob/main/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 import { Link } from "react-router-dom";
 // nodejs library that concatenates strings
 import classnames from "classnames";
 
 // reactstrap components
+import FontAwesome from 'react-fontawesome'
+
 import {
   Collapse,
   NavbarBrand,
@@ -75,10 +60,10 @@ function ExamplesNavbar() {
             data-placement="bottom"
             to="/index"
             target="_blank"
-            title="Coded by Creative Tim"
+            title="PersoCoach"
             tag={Link}
           >
-            Paper Kit 2
+            <img src="11.png" height="53px" width="150px" />
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
@@ -98,30 +83,25 @@ function ExamplesNavbar() {
           isOpen={navbarCollapse}
         >
           <Nav navbar>
-            <NavItem>
+          <NavItem>
               <NavLink to="/index" tag={Link}>
-                <i className="nc-icon nc-layout-11" /> Components
+                 Home
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/Coaches" tag={Link}>
+                <i className="" /> Coaches
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink
-                href="https://demos.creative-tim.com/paper-kit-react/#/documentation?ref=pkr-examples-navbar"
-                target="_blank"
+                href="#"
+               
               >
-                <i className="nc-icon nc-book-bookmark" /> Documentation
+                Community
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://twitter.com/CreativeTim?ref=creativetim"
-                target="_blank"
-                title="Follow us on Twitter"
-              >
-                <i className="fa fa-twitter" />
-                <p className="d-lg-none">Twitter</p>
-              </NavLink>
-            </NavItem>
+           
             <NavItem>
               <NavLink
                 data-placement="bottom"
@@ -130,7 +110,7 @@ function ExamplesNavbar() {
                 title="Like us on Facebook"
               >
                 <i className="fa fa-facebook-square" />
-                <p className="d-lg-none">Facebook</p>
+                <p className="d-lg-none ">Facebook</p>
               </NavLink>
             </NavItem>
             <NavItem>
@@ -145,25 +125,30 @@ function ExamplesNavbar() {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://www.github.com/CreativeTimOfficial?ref=creativetim"
-                target="_blank"
-                title="Star on GitHub"
-              >
-                <i className="fa fa-github" />
-                <p className="d-lg-none">GitHub</p>
-              </NavLink>
+         
+              <Button className="btn-round" color="#C8C9EC" type="button">
+                  <FontAwesome className="fas fa-user-plus" />
+                   Sign up
+                </Button>
+             
             </NavItem>
             <NavItem>
-              <Button
-                className="btn-round"
-                color="danger"
-                href="https://www.creative-tim.com/product/paper-kit-pro-react?ref=pkr-examples-navbar"
-                target="_blank"
-              >
-                <i className="nc-icon nc-spaceship"></i> Upgrade to Pro
-              </Button>
+         
+    
+           <Button
+                  className="btn-round mr-1"
+                  color="#6796E8"
+                  outline
+                  type="button"
+                  
+
+                >
+                 <FontAwesome className="far fa-sign-in-alt" /> Sign in
+                </Button>
+       </NavItem>
+           
+            <NavItem>
+           
             </NavItem>
           </Nav>
         </Collapse>
