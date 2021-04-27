@@ -149,7 +149,7 @@ export default class Catalog extends Component {
         "&type=" +
         this.state.type +
         "&key="+
-        k
+        this.state.key
     );
 
     const body = await response.json();

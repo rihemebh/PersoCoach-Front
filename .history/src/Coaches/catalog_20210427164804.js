@@ -27,7 +27,6 @@ export default class Catalog extends Component {
     super(props);
 
     this.state = {
-      key:"",
       checkedRate: [false, false, false, false, false],
       checkedGender: [false, false],
       checkedType: [false, false],
@@ -46,7 +45,6 @@ export default class Catalog extends Component {
     };
 
     this.nbCoaches=this.nbCoaches.bind(this);
-    this.findCoaches=this.findCoaches.bind(this);
 
   }
 
@@ -130,11 +128,9 @@ export default class Catalog extends Component {
         );
   }
   /********************** */
-  async findCoaches(curr, d,key) {
+  async findCoaches(curr, d) {
     let direction = d ?? 0;
     let current = curr ?? 0;
-    let k = key ?? this.state.key;
-
     const response = await fetch(
       "catalog/coaches?page=" +
         current +
@@ -147,13 +143,11 @@ export default class Catalog extends Component {
         "&gender="+
         this.state.gender +
         "&type=" +
-        this.state.type +
-        "&key="+
-        k
+        this.state.type
     );
 
     const body = await response.json();
-    this.setState({ coaches: body.content, key: k});
+    this.setState({ coaches: body.content});
     this.nbCoaches();
   }
   
@@ -172,7 +166,7 @@ export default class Catalog extends Component {
   }
   async componentDidMount() {
     this.findCoaches(this.state.currentPage);
-    this.setState({gender:"", rate: 5 , type: "", filter: false, key:""},async ()  =>{
+    this.setState({gender:"", rate: 5 , type: "", filter: false},async ()  =>{
       this.nbCoaches();
     });
     
@@ -189,7 +183,7 @@ export default class Catalog extends Component {
       <div className="" style={{}}>
         <CatalogNav />
         <div style={{ height: "120px" }}></div>
-        <Jumb findCoaches={this.findCoaches}/>
+        <Jumb />
 
         <div>
           <Container>
@@ -365,7 +359,7 @@ export default class Catalog extends Component {
                       })}
                     </Row>
 
-                    {this.state.nbCoach<=8 ? <div></div> : 
+                    {this.state.nbCoach == 0 ? <div}
                     <Row className="" style={{ marginTop: "25px" }}>
                  
                       <Pagination
@@ -374,9 +368,10 @@ export default class Catalog extends Component {
                         itemsCountPerPage={this.state.CoachesPerPage}
                         totalItemsCount={this.state.nbCoach}
                         pageRangeDisplayed={5}
+
                         onChange={this.handlePageChange.bind(this)}
                       ></Pagination>
-                    </Row>}
+                    </Row>
                   </Col>
 
                   <div> </div>

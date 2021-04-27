@@ -16,23 +16,9 @@ export default class Jumb extends Component {
     this.state={
       key: "",
     }
-    this.updateInputValue=this.updateInputValue.bind(this);
-    this.handleSearch= this.handleSearch.bind(this);
-  }
-  handleSearch = ()=>{
-    this.props.findCoaches(0,0,this.state.key);
   }
 
-updateInputValue = (e)=>
-{ const x = e.target.value;
-
-  this.setState({
-    key : x,
-  });
-
-} 
-
-render() {
+  render() {
     const picStyle = {
       height: "90px",
       width: "90px",
@@ -71,9 +57,7 @@ render() {
                  
                     <Input placeholder="Search.." onChange={this.updateInputValue} />
                     <InputGroupText className="border">
-                    <button onClick={()=>this.handleSearch()}><FontAwesome className="text-info fa-search">
-
-                    </FontAwesome></button>
+                        <FontAwesome className="text-info fa-search"><a href="#" onClick={()=>this.handleKey()}></a></FontAwesome>
                         
                       </InputGroupText>
                   </InputGroup>

@@ -96,7 +96,7 @@ class Coach extends Component {
                 <img
                   alt="..."
                   className="img-circle img-no-padding img-responsive"
-                  src={this.state.coach.url} style={{width:"300px",height:"130px"}}
+                  src={this.state.coach.url} style={{}}
                 />
               </div>
               <div className="name">

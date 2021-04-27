@@ -20,7 +20,7 @@ export default class Jumb extends Component {
     this.handleSearch= this.handleSearch.bind(this);
   }
   handleSearch = ()=>{
-    this.props.findCoaches(0,0,this.state.key);
+    this.props.findCoachs(0,0,this.state.key);
   }
 
 updateInputValue = (e)=>

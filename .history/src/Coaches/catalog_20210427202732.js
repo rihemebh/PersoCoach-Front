@@ -133,8 +133,7 @@ export default class Catalog extends Component {
   async findCoaches(curr, d,key) {
     let direction = d ?? 0;
     let current = curr ?? 0;
-    let k = key ?? this.state.key;
-
+    let k = key ?? "";
     const response = await fetch(
       "catalog/coaches?page=" +
         current +
@@ -153,7 +152,7 @@ export default class Catalog extends Component {
     );
 
     const body = await response.json();
-    this.setState({ coaches: body.content, key: k});
+    this.setState({ coaches: body.content});
     this.nbCoaches();
   }
   

@@ -20,7 +20,7 @@ export default class Jumb extends Component {
     this.handleSearch= this.handleSearch.bind(this);
   }
   handleSearch = ()=>{
-    this.props.findCoaches(0,0,this.state.key);
+    this.props.findCoachs(0,0,this.state.key);
   }
 
 updateInputValue = (e)=>
@@ -71,9 +71,7 @@ render() {
                  
                     <Input placeholder="Search.." onChange={this.updateInputValue} />
                     <InputGroupText className="border">
-                    <button onClick={()=>this.handleSearch()}><FontAwesome className="text-info fa-search">
-
-                    </FontAwesome></button>
+                        <FontAwesome className="text-info fa-search"><button onClick={()=>this.handleSearch()}></a></FontAwesome>
                         
                       </InputGroupText>
                   </InputGroup>

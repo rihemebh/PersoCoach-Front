@@ -133,28 +133,30 @@ export default class Catalog extends Component {
   async findCoaches(curr, d,key) {
     let direction = d ?? 0;
     let current = curr ?? 0;
-    let k = key ?? this.state.key;
+    let k = key ?? "";
+    this.setState=({
+      key:k,
+    },()=>{
+      const response = await fetch(
+        "catalog/coaches?page=" +
+          current +
+          "&size=" +
+          this.state.CoachesPerPage +
+          "&direction=" +
+          direction +
+          "&rate=" +
+          this.state.rate +
+          "&gender="+
+          this.state.gender +
+          "&type=" +
+          this.state.type +
+          "&key="+
+          this.state.key
+      );
+    })
+    
 
-    const response = await fetch(
-      "catalog/coaches?page=" +
-        current +
-        "&size=" +
-        this.state.CoachesPerPage +
-        "&direction=" +
-        direction +
-        "&rate=" +
-        this.state.rate +
-        "&gender="+
-        this.state.gender +
-        "&type=" +
-        this.state.type +
-        "&key="+
-        k
-    );
-
-    const body = await response.json();
-    this.setState({ coaches: body.content, key: k});
-    this.nbCoaches();
+   
   }
   
   /***************************** */
