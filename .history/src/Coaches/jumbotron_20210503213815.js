@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Jumbotron } from "react-bootstrap";
 import FontAwesome from "react-fontawesome";
 import {
-  Button,
   Container,
   Input,
   InputGroup,
@@ -21,7 +20,7 @@ export default class Jumb extends Component {
     this.handleSearch= this.handleSearch.bind(this);
   }
   handleSearch = ()=>{
-    this.props.updatekey(this.state.key)}
+    this.props.updateKey(this.state.key  }
 
 updateInputValue = (e)=>
 { const x = e.target.value;
@@ -68,15 +67,17 @@ render() {
  <InputGroup className="form-group-no-border">
                     <InputGroupAddon addonType="prepend">
                     </InputGroupAddon>
+                 
                     <Input placeholder="Search.." onChange={this.updateInputValue} />
-                   <button className="btn-sm btn-light border" onClick={this.handleSearch} >
-                  <FontAwesome className="text-secondary fa-search" >
-                    </FontAwesome>
-        
-                     </button> 
+                    <InputGroupText className="border">
+                    <button onClick={()=>this.handleSearch()}><FontAwesome className="text-info fa-search">
+
+                    </FontAwesome></button>
+                        
+                      </InputGroupText>
                   </InputGroup>
                       
-      <small className="" style={{color: '#d9d9d9'}}>You can search by names or keys</small>
+      <small className="" style={{color: '#d9d9d9'}}>You can search by names and types</small>
         
         </Container>
       </Jumbotron>

@@ -46,13 +46,7 @@ export default class Catalog extends Component {
 
     this.nbCoaches=this.nbCoaches.bind(this);
    this.findCoaches=this.findCoaches.bind(this);
-   this.updatekey=this.updatekey.bind(this);
 
-  }
-  updatekey= (k)=>{
-    this.setState({
-      key: k,
-    },()=> this.findCoaches(0,0,this.state.key))
   }
 
   onClickButton = async (e) => {
@@ -138,7 +132,7 @@ export default class Catalog extends Component {
   async findCoaches(curr, d) {
     let direction = d ?? 0;
     let current = curr ?? 0;
-   // let k = (key==null) ? this.state.key : key;
+    let k = key ?? this.state.key;
 
     const response = await fetch(
       "catalog/coaches?page=" +
@@ -152,9 +146,8 @@ export default class Catalog extends Component {
         "&gender="+
         this.state.gender +
         "&type=" +
-        this.state.type +
-        "&key="+
-        this.state.key   
+        this.state.type 
+    
     );
     const body = await response.json();
     this.setState({ coaches: body.content});
@@ -168,9 +161,7 @@ export default class Catalog extends Component {
     "&gender="+
     this.state.gender +
     "&type=" +
-    this.state.type+
-    "&key="+
-    this.state.key  
+    this.state.type
 );
 
     const body= await response1.json();
@@ -197,7 +188,7 @@ export default class Catalog extends Component {
       <div className="" style={{}}>
         <CatalogNav />
         <div style={{ height: "120px" }}></div>
-        <Jumb updatekey={this.updatekey}/>
+        <Jumb findCoaches={this.findCoaches}/>
 
         <div>
           <Container>

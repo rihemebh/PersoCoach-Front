@@ -69,7 +69,7 @@ render() {
                     <InputGroupAddon addonType="prepend">
                     </InputGroupAddon>
                     <Input placeholder="Search.." onChange={this.updateInputValue} />
-                   <button className="btn-sm btn-light border" onClick={this.handleSearch} >
+                   <button className="btn-sm btn btn-warning" >
                   <FontAwesome className="text-secondary fa-search" >
                     </FontAwesome>
         
