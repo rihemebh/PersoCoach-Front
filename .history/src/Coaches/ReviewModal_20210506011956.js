@@ -1,0 +1,173 @@
+import React, { Component } from 'react'
+
+export default class ReviewModal extends Component {
+    render() {
+        return (
+            <Container>
+      
+        <Row id="modals">
+          <Col>
+            {/* Button trigger modal */}
+            <Button
+              className="btn-round"
+              color="warning"
+              outline
+              type="button"
+              onClick={this.toggleModal}
+            >
+                <div>
+    
+        <ToastContainer 
+        draggable={false} 
+        transition={Zoom}
+        autoClose={4000}
+        position="bottom-right"
+        hideProgressBar={false}
+        />
+      </div>
+              Choose this Coach
+            </Button>
+            {/* Modal */}
+            <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
+              <div className="modal-header">
+                <button
+                  aria-label="Close"
+                  className="close"
+                  type="button"
+                  onClick={this.toggleModal}
+                >
+                  <span aria-hidden={true}></span>
+                </button>
+                <h5 className="modal-title text-center" id="exampleModalLabel">
+                  Subscribe
+                </h5>
+              </div>
+              <div className="modal-body">
+                <h6> Welcome to the journey</h6>
+                Once you fill this form you will get a brief personalized
+                program from the coach in 2 or 3 days
+                <br></br>
+                <br></br>
+                <small className="text-right text-danger">
+                  * Required field
+                </small>
+              </div>
+              <div class="container">
+                <Container>
+                  <AvForm
+                    onValidSubmit={this.handleValidSubmit}
+                    onInvalidSubmit={this.handleInvalidSubmit}
+                  >
+                    <h6>
+                      <AvField name="Name" label=" Name *" type="text" required />
+                    </h6>
+                    <h6>
+                      <AvField name="age" label=" Age *" type="number" required />
+                    </h6>
+                    <FormGroup>
+                      <Label for="exampleSelect">
+                        <h6>Gender *</h6>
+                      </Label>
+                      <AvField
+                        type="select"
+                        name="select"
+                        id="exampleSelect"
+                        required
+                      >
+                        <option>-- Not selected --</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                      </AvField>
+                    </FormGroup>
+                    <h6>
+                      <AvField
+                        name="weight"
+                        label=" Weight *"
+                        type="number"
+                        required
+                      />
+                    </h6>
+                    <h6>
+                      <AvField
+                        name="height"
+                        label=" Height *"
+                        type="number"
+                        required
+                      />
+                    </h6>
+                    <FormGroup>
+                      <Label for="exampleSelect1">
+                        <h6>How often do you exercice ? *</h6>
+                      </Label>
+                      <AvField
+                        type="select"
+                        name="select1"
+                        id="exampleSelect1"
+                        required
+                      >
+                        <option>-- Not selected --</option>
+                        <option>Always</option>
+                        <option>Sometimes</option>
+                        <option>Rarely</option>
+                        <option>Never</option>
+                      </AvField>
+                    </FormGroup>
+                    <FormGroup>
+                      <h6>
+                        {" "}
+                        <AvField
+                          name="goal"
+                          label="Goal *"
+                          type="textarea"
+                          required
+                        />
+                      </h6>
+                      <FormText>
+                        Example: I want to change my lifestyle / I want to loose
+                        weight ...
+                      </FormText>
+                    </FormGroup>
+                    <br></br>
+
+              {/*      <h6>
+                      {" "}
+                      <AvField
+                        type="file"
+                        name="file"
+                        label="Upload a full picture of you"
+                        id="exampleFile"
+                      />
+                    </h6>
+
+                    {/* <AvField type="radio"  name="radio1" required></AvField> <span> I accept all the terms and conditions *</span>
+                     */}
+
+                    <Container className="text-right"></Container>
+                    <br></br>
+                    <div className="modal-footer">
+                      <div className="">
+                        <Button type="submit" onSubmit={this.handleValidSubmit} >
+                          Submit your request
+                        </Button>
+                      </div>
+                      <div className="">
+                        <Button
+                          className="btn-link"
+                          color="default"
+                          type="button"
+                          onClick={this.toggleModal}
+                        >
+                          Back
+                        </Button>
+                      </div>
+                    </div>
+                  </AvForm>
+                </Container>
+              </div>
+            </Modal>
+          </Col>
+        </Row>
+      </Container>
+        )
+    }
+}
