@@ -42,7 +42,7 @@ render() {
     return (
       <Jumbotron
         className=""
-        style={{ backgroundColor: 'white' , paddingTop: "0px" }}
+        style={{ background: "url(ssets/img/coach3.jpeg)", paddingTop: "0px" }}
       >
         <p
           style={{

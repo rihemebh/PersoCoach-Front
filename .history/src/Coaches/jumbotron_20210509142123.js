@@ -42,7 +42,7 @@ render() {
     return (
       <Jumbotron
         className=""
-        style={{ backgroundColor: 'white' , paddingTop: "0px" }}
+        style={{ background: "url(ssets/img/coach3.jpeg)", paddingTop: "0px" }}
       >
         <p
           style={{
@@ -69,7 +69,7 @@ render() {
                     <InputGroupAddon addonType="prepend">
                     </InputGroupAddon>
                     <Input placeholder="Search.." onChange={this.updateInputValue} />
-                   <button className="btn-sm btn-light border" onChange={this.handleSearch} onClick={this.handleSearch} >
+                   <button className="btn-sm btn-light border" onChange onClick={this.handleSearch} >
                   <FontAwesome className="text-secondary fa-search" >
                     </FontAwesome>
         

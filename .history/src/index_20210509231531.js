@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 // styles
 import "bootstrap/scss/bootstrap.scss";
 import "react-fontawesome";
+import FontAwesome from 'react-fontawesome';
 import "assets/scss/paper-kit.scss?v=1.3.0";
 import "assets/demo/demo.css?v=1.3.0";
 import "assets/css/filter.css?v=1.3.0";

@@ -64,7 +64,7 @@ export default class Catalog extends Component {
   onClickCheckbox = (i)=>{
     if(i==1) 
     this.setState({gender : "Man"});
-    else if(i==2)   this.setState({gender : "Women"});
+    else if(i==2)   this.setState({gender : "women"});
     else this.setState({gender : ""});
   }
 

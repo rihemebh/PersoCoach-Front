@@ -146,16 +146,16 @@ function CatalogNav() {
             </NavItem>
             <NavItem>
         
-         <a href="/register-page"><Button
-           
-           className="btn-round "
-           color="info"
-           outline
-            type="button" 
-            >
+           <a href
+           type="button"
+                  className="btn-round "
+                  color="info"
+                  outline
+                   type="button" 
+                   >
 
-          <FontAwesome className="far fa-sign-in" /> Sign in
-         </Button></a>  
+                 <FontAwesome className="far fa-sign-in" /> Sign in
+                </Button>
        </NavItem>
            
             <NavItem>

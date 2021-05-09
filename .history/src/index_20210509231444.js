@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 // styles
 import "bootstrap/scss/bootstrap.scss";
 import "react-fontawesome";
+import FontAwesome from 'react-fontawesome';
 import "assets/scss/paper-kit.scss?v=1.3.0";
 import "assets/demo/demo.css?v=1.3.0";
 import "assets/css/filter.css?v=1.3.0";
@@ -14,7 +15,7 @@ import Index from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
-import RegisterPage from "Authentification/RegisterPage";
+import RegisterPage from "views/Authentification/RegisterPage.js";
 import Catalog from "Coaches/Catalog";
 import Coach from "Coaches/Coach";
 // others
