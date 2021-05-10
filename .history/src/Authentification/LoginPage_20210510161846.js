@@ -37,7 +37,9 @@ function RegisterPage() {
   padding: "30px" }}>
                
                 <img  className="mx-auto" src={require("assets/img/Perso.png").default} width="250px" height="128px"></img>
-            
+                <br></br>
+                <h3 className="text-info text-center" >  Welcome Back ! </h3>
+                   <br></br>
                 <div className="social-line text-center">
 
                   
