@@ -25,6 +25,7 @@ import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import IndexHeader from "components/Headers/IndexHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 
+
 // index sections
 import SectionButtons from "views/index-sections/SectionButtons.js";
 import SectionNavbars from "views/index-sections/SectionNavbars.js";
@@ -39,6 +40,7 @@ import SectionDark from "views/index-sections/SectionDark.js";
 import SectionLogin from "views/index-sections/SectionLogin.js";
 import SectionExamples from "views/index-sections/SectionExamples.js";
 import SectionDownload from "views/index-sections/SectionDownload.js";
+import Accueil from 'views/accueil/Accueil.js';
 
 function Index() {
   document.documentElement.classList.remove("nav-open");
@@ -50,7 +52,7 @@ function Index() {
   });
   return (
     <>
-      <IndexNavbar />
+    {/*   <IndexNavbar />
       <IndexHeader />
       <div className="main">
         <SectionButtons />
@@ -66,8 +68,9 @@ function Index() {
         <SectionLogin />
         <SectionExamples />
         <SectionDownload />
-        <DemoFooter />
-      </div>
+      <DemoFooter />
+  </div> */}
+  <Accueil/> 
     </>
   );
 }
