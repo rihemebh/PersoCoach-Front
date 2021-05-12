@@ -18,6 +18,7 @@ import RegisterPage from "Authentification/RegisterPage";
 import LoginPage from "Authentification/LoginPage";
 import Catalog from "Coaches/Catalog";
 import Coach from "Coaches/Coach";
+import Register from "./Authentification/components/register.component";
 // others
 
 ReactDOM.render(
@@ -47,6 +48,10 @@ ReactDOM.render(
       <Route
         path="/register-page"
         render={(props) => <RegisterPage {...props} />}
+      />
+        <Route
+        path="/sign-up"
+        render={(props) => <Register {...props} />}
       />
       <Route
         path="/login"
