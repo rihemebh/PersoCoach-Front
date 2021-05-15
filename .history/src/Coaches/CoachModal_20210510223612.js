@@ -42,8 +42,14 @@ export default class CoachModal extends React.Component {
     });
   };
 
+   showtoastSuccess = ()=>{
+     return toast("Wow so easy!");
+   }
+   showtoastFail = ()=>{
+    return toast("Wow so easy!");
+  }
   saveRequest =  () => {
-console.log(this.props.id);
+console.log("saverequest");
     axios.put(
       "http://localhost:3000/catalog/coach/" +
         this.props.id +

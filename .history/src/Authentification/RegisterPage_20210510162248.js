@@ -21,7 +21,7 @@ function RegisterPage() {
         className="page-header"
         style={{
           backgroundImage:
-            "url(https://www.myamericannurse.com/wp-content/uploads/2014/07/yoga-cross-leg-stuff.jpg)",
+            "url(https://www.heart.org/-/media/healthy-living-images/fitness/runner_tying_shoe.jpg)",
         }}
       >
         <div className="filter" />
@@ -29,15 +29,17 @@ function RegisterPage() {
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="ml-auto mr-auto" style={{backgroundColor: "#ffffff",
-                  borderRadius: "8px",
-                  color: "black",
-                  maxWidth: "350px",
-                  margin:" 20px 0 70px",
-                  minHeight: "500px",
-                  padding: "30px" }}>
+  borderRadius: "8px",
+  color: "black",
+  maxWidth: "350px",
+  margin:" 20px 0 70px",
+  minHeight: "500px",
+  padding: "30px" }}>
                
                 <img  className="mx-auto" src={require("assets/img/Perso.png").default} width="250px" height="128px"></img>
             
+          
+                  
                 <div className="social-line text-center">
 
                   
@@ -72,18 +74,18 @@ function RegisterPage() {
                   <label style={{marginTop: "15px"}}>Password</label>
                   <Input placeholder="Password" type="password" />
                   <Button block className="btn-round" style={{marginTop: "30px" }}color="info">
-                    Login
+                    Sign up
                   </Button>
                 </Form>
                 <div className="forgot">
                   <Button
-                    className="btn-link text-center"
+                    className="btn-link"
                     color=""
                     href="#pablo"
                     onClick={(e) => e.preventDefault()}
                     style={{textAlign: 'center'}}
                   >
-                    Forgot password?
+                    Already a member? <a href='/login' className='link' style={{textDecoration:"underline"}}>Sign in</a>
                   </Button>
                 </div>
               </Card>

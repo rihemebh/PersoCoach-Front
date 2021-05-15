@@ -42,8 +42,14 @@ export default class CoachModal extends React.Component {
     });
   };
 
+   showtoastSuccess = ()=>{
+     return toast("Wow so easy!");
+   }
+   showtoastFail = ()=>{
+    return toast("Wow so easy!");
+  }
   saveRequest =  () => {
-console.log(this.props.id);
+console.log("saverequest");
     axios.put(
       "http://localhost:3000/catalog/coach/" +
         this.props.id +
@@ -165,7 +171,7 @@ console.log("endsaverequest");
                   >
                     <h6>
                     Name <span className='text-danger'>*</span>
-                      <AvField name="name" type="text" required />
+                      <AvField name="Name" type="text" required />
                     </h6>
                     <h6>
                     Age <span className='text-danger'>*</span></h6>
@@ -250,7 +256,12 @@ console.log("endsaverequest");
 
                     {/* <AvField type="radio"  name="radio1" required></AvField> <span> I accept all the terms and conditions *</span>
                      */}
-                          <div className="modal-footer">
+                         </AvForm>
+                         </Container></div>
+                    <Container className="text-right"></Container>
+                    <br></br>
+             
+                    <div className="modal-footer">
                       <div className="">
                         <Button type="submit" onSubmit={this.handleValidSubmit} >
                           Submit your request
@@ -267,11 +278,6 @@ console.log("endsaverequest");
                         </Button>
                       </div>
                     </div>
-                         </AvForm>
-                         </Container></div>
-                
-             
-               
                   
            
                 

@@ -42,8 +42,14 @@ export default class CoachModal extends React.Component {
     });
   };
 
-  saveRequest =  () => {
-console.log(this.props.id);
+   showtoastSuccess = ()=>{
+     return toast("Wow so easy!");
+   }
+   showtoastFail = ()=>{
+    return toast("Wow so easy!");
+  }
+  saveRequest = async () => {
+
     axios.put(
       "http://localhost:3000/catalog/coach/" +
         this.props.id +
@@ -74,12 +80,10 @@ console.log(this.props.id);
 
 
 this.toggleModal();
-console.log("endsaverequest");
-};
 
-
+   
+  };
   handleValidSubmit(event, values) {
-
     this.setState(
       {
         name: values.name,
@@ -91,7 +95,7 @@ console.log("endsaverequest");
         //pic: values.file,
         practice: values.select1,
       },
-     ()=> this.saveRequest()
+     async()=> this.saveRequest()
     );
   }
 
@@ -149,13 +153,12 @@ console.log("endsaverequest");
                 <h6> Welcome to the journey</h6>
                 Once you fill this form you will get a brief personalized
                 program from the coach in 2 or 3 days
-                <br></br><br></br>
+                <br></br>
+                <br></br>
                 <small className="text-right text-danger">
                   * Required field
                 <br></br>
                 </small>
-                <br></br>
-              
            
               <div className="container">
                 <Container>
@@ -165,7 +168,7 @@ console.log("endsaverequest");
                   >
                     <h6>
                     Name <span className='text-danger'>*</span>
-                      <AvField name="name" type="text" required />
+                      <AvField name="Name" type="text" required />
                     </h6>
                     <h6>
                     Age <span className='text-danger'>*</span></h6>
@@ -224,13 +227,14 @@ console.log("endsaverequest");
                     <FormGroup>
                       <h6>
                       Goal <span className='text-danger'>*</span>
-                        </h6>
+                        {" "}
                         <AvField
                           name="goal"
                         
                           type="textarea"
                           required
-                        ></AvField>
+                        />
+                     
                       <FormText>
                         Example: I want to change my lifestyle / I want to loose
                         weight ...
@@ -250,7 +254,12 @@ console.log("endsaverequest");
 
                     {/* <AvField type="radio"  name="radio1" required></AvField> <span> I accept all the terms and conditions *</span>
                      */}
-                          <div className="modal-footer">
+                         </AvForm>
+                         </Container></div>
+                    <Container className="text-right"></Container>
+                    <br></br>
+             
+                    <div className="modal-footer">
                       <div className="">
                         <Button type="submit" onSubmit={this.handleValidSubmit} >
                           Submit your request
@@ -267,11 +276,6 @@ console.log("endsaverequest");
                         </Button>
                       </div>
                     </div>
-                         </AvForm>
-                         </Container></div>
-                
-             
-               
                   
            
                 

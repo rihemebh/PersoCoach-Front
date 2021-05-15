@@ -1,10 +1,11 @@
 
 import React from "react";
 
-import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
+import { Button, Card, Form, Input, Container, Row, Col, NavbarBrand ,NavLink} from "reactstrap";
 
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ProfileNav from "components/Navbars/ProfileNav";
+import { Link } from "react-router-dom";
 
 function RegisterPage() {
   document.documentElement.classList.remove("nav-open");
@@ -21,7 +22,7 @@ function RegisterPage() {
         className="page-header"
         style={{
           backgroundImage:
-            "url(https://www.myamericannurse.com/wp-content/uploads/2014/07/yoga-cross-leg-stuff.jpg)",
+            "url(https://www.heart.org/-/media/healthy-living-images/fitness/runner_tying_shoe.jpg)",
         }}
       >
         <div className="filter" />
@@ -36,8 +37,14 @@ function RegisterPage() {
                   minHeight: "500px",
                   padding: "30px" }}>
                
+                <img  className="mx-auto" src={require("assets/img/11.png").default} width="250px" height="128px"></img>
+                <br></br>
+                <h3 className=" text-info text-center"style={{textDecoration:"bold"}} > <b>Sign Up </b></h3>
+                   <br></br>
+
                 <img  className="mx-auto" src={require("assets/img/Perso.png").default} width="250px" height="128px"></img>
             
+      
                 <div className="social-line text-center">
 
                   
@@ -72,18 +79,23 @@ function RegisterPage() {
                   <label style={{marginTop: "15px"}}>Password</label>
                   <Input placeholder="Password" type="password" />
                   <Button block className="btn-round" style={{marginTop: "30px" }}color="info">
-                    Login
+                    Sign up
                   </Button>
                 </Form>
                 <div className="forgot">
                   <Button
-                    className="btn-link text-center"
+                    className="btn-link"
                     color=""
                     href="#pablo"
                     onClick={(e) => e.preventDefault()}
                     style={{textAlign: 'center'}}
                   >
-                    Forgot password?
+<<<<<<< HEAD
+                    Already a member? <a href="/login" className='link' style={{textDecoration:"underline"}}>Sign in</a>
+=======
+                  <NavLink to='/login'  tag={Link} className='link' >
+                  Already a member? <span style={{textDecoration:"underline"}}>Sign in</span>  </NavLink>
+>>>>>>> main
                   </Button>
                 </div>
               </Card>

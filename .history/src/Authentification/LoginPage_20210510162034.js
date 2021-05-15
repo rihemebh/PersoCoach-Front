@@ -29,15 +29,17 @@ function RegisterPage() {
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
               <Card className="ml-auto mr-auto" style={{backgroundColor: "#ffffff",
-                  borderRadius: "8px",
-                  color: "black",
-                  maxWidth: "350px",
-                  margin:" 20px 0 70px",
-                  minHeight: "500px",
-                  padding: "30px" }}>
+  borderRadius: "8px",
+  color: "black",
+  maxWidth: "350px",
+  margin:" 20px 0 70px",
+  minHeight: "500px",
+  padding: "30px" }}>
                
-                <img  className="mx-auto" src={require("assets/img/Perso.png").default} width="250px" height="128px"></img>
-            
+                <img  className="mx-auto" src={require("assets/img/11.png").default} width="250px" height="128px"></img>
+                <br></br>
+                <h3 className="text-info text-center" >  Welcome Back ! </h3>
+                   <br></br>
                 <div className="social-line text-center">
 
                   
