@@ -5,6 +5,7 @@
     "availity-reactstrap-validation": "^2.7.1",
     "axios": "^0.21.1",
     "classnames": "2.2.6",
+    "formik": "^2.2.6",
     "moment": "2.29.1",
     "node-sass": "5.0.0",
     "nouislider": "14.6.4",
@@ -19,7 +20,9 @@
     "react-router-dom": "5.2.0",
     "react-scripts": "^4.0.3",
     "react-toastify": "^7.0.4",
-    "reactstrap": "8.9.0"
+    "react-validation": "^3.0.7",
+    "reactstrap": "8.9.0",
+    "validator": "^13.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
