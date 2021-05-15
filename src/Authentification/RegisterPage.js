@@ -29,13 +29,14 @@ function RegisterPage() {
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
-              <Card className="ml-auto mr-auto" style={{backgroundColor: "#ffffff",
-  borderRadius: "8px",
-  color: "black",
-  maxWidth: "350px",
-  margin:" 20px 0 70px",
-  minHeight: "500px",
-  padding: "30px" }}>
+              <Card className="ml-auto mr-auto" 
+                    style={{backgroundColor: "#ffffff",
+                    borderRadius: "8px",
+                    color: "black",
+                    maxWidth: "350px",
+                    margin:" 20px 0 70px",
+                    minHeight: "500px",
+                    padding: "30px" }}>
                
                 <img  className="mx-auto" src={require("assets/img/Perso.png").default} width="250px" height="128px"></img>
             
@@ -70,8 +71,16 @@ function RegisterPage() {
                   </Button>*/}
                 </div>
                 <Form className="">
+                
                   <label style={{marginTop: "15px"}}>Email</label>
-                  <Input placeholder="Email" type="text" />
+                  <Input  placeholder="Email" 
+                          type="text" 
+                          
+                          />
+
+                  <label style={{marginTop: "15px"}}>Username</label>
+                  <Input placeholder="Username" type="text" />
+
                   <label style={{marginTop: "15px"}}>Password</label>
                   <Input placeholder="Password" type="password" />
                   <Button block className="btn-round" style={{marginTop: "30px" }}color="info">

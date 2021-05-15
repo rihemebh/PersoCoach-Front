@@ -86,7 +86,7 @@ function RegisterPage() {
                     Forgot password?
                   </Button>
                 </div>
-              </Card>
+              </Card> 
             </Col>
           </Row>
         </Container>

@@ -139,7 +139,7 @@ function ProfileNav() {
          
               <Button className="btn-round btn-info"  type="button">
                   <FontAwesome className="fas fa-user-plus" />
-                   Sign up
+                   <Link to="/signup">Sign up</Link>
                 </Button>
              
             </NavItem>
@@ -151,7 +151,8 @@ function ProfileNav() {
                   outline
                    type="button">
 
-                 <FontAwesome className="far fa-sign-in" /> Sign in
+                 <FontAwesome className="far fa-sign-in" /> 
+                 <Link to="/login">Sign in</Link>
                 </Button>
        </NavItem>
            

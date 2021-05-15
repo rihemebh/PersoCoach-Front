@@ -18,12 +18,19 @@ import RegisterPage from "Authentification/RegisterPage";
 import LoginPage from "Authentification/LoginPage";
 import Catalog from "Coaches/Catalog";
 import Coach from "Coaches/Coach";
+import Login from "Authentification/Login";
+import SignUp from "Authentification/SignUp";
+import App from "App";
+
 // others
 
 ReactDOM.render(
+  
   <BrowserRouter>
     <Switch>
       <Route path="/index" render={(props) => <Index {...props} />} />
+      <Route path="/app" render={(props) => <App {...props} />} />
+
       <Route
         path="/nucleo-icons"
         render={(props) => <NucleoIcons {...props} />}
@@ -49,10 +56,14 @@ ReactDOM.render(
         render={(props) => <RegisterPage {...props} />}
       />
       <Route
+      path="/signup"
+      render={(props) => <SignUp {...props} />}
+    />
+      <Route
         path="/login"
-        render={(props) => <LoginPage {...props} />}
+        render={(props) => <Login {...props} />}
       />
-      <Redirect to="/Coaches" />
+      <Redirect to="/signup" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
