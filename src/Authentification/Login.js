@@ -57,7 +57,7 @@ export class Login extends Component{
                 })
                 console.log("redirecting..")
                  this.props.history.push({
-                  pathname: '/profile'});
+                  pathname: '/Coaches'});
                   window.location.reload(); 
             },
         ).catch(
