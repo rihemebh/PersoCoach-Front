@@ -23,6 +23,7 @@ import App from "App";
 //import Register from "Authentification/components/register.component";
 
 import Profile from "components/Profile";
+import RegisterPage from "Authentification/RegisterPage";
 
 
 // others
