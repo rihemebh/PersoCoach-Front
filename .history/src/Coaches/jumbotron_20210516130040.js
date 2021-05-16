@@ -15,9 +15,9 @@ export default class Jumb extends Component {
   constructor(props){
     super(props);
     this.state={
-     
+      key: "",
     }
-  
+    this.updateInputValue=this.updateInputValue.bind(this);
     this.handleSearch= this.handleSearch.bind(this);
   }
   handleSearch = (e)=>{
@@ -26,7 +26,7 @@ export default class Jumb extends Component {
 
 
 
-
+} 
 
 render() {
     const picStyle = {

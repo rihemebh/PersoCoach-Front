@@ -157,13 +157,13 @@ export default class Catalog extends Component {
         this.state.key   
     ).then(function (response) {
        rep = response.data.content;
-       //console.log(rep);
+       console.log(rep);
        this.setState({ coaches: rep}) 
        
-      this.nbCoaches();
-    }.bind(this)
+      //this.nbCoaches();
+    }
     ).catch(function (error){
-     console.log(error);
+console.log(error);
     })
    
    
@@ -175,7 +175,7 @@ export default class Catalog extends Component {
   
   /***************************** */
   async nbCoaches(){
-    const response1 =  axios.get("catalog/coachesNb?rate=" +
+    const response1 = await fetch("catalog/coachesNb?rate=" +
     this.state.rate +
     "&gender="+
     this.state.gender +
@@ -183,16 +183,9 @@ export default class Catalog extends Component {
     this.state.type+
     "&key="+
     this.state.key  
-).then(function (response) {
-  
-  
-  this.setState({ nbCoach: response.data}) 
-  
-}.bind(this)
-).catch(function (error){
-console.log(error);
-})
- 
+);
+    const body= await response1.json();
+    this.setState({ nbCoach: body })
   }
 
 

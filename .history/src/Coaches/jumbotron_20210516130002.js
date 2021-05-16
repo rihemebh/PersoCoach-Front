@@ -15,18 +15,23 @@ export default class Jumb extends Component {
   constructor(props){
     super(props);
     this.state={
-     
+      key: "",
     }
-  
+    this.updateInputValue=this.updateInputValue.bind(this);
     this.handleSearch= this.handleSearch.bind(this);
   }
   handleSearch = (e)=>{
     this.props.updatekey(e.target.value)
   }
 
+updateInputValue = (e)=>
+{ const x = e.target.value;
 
+  this.setState({
+    key : x,
+  });
 
-
+} 
 
 render() {
     const picStyle = {

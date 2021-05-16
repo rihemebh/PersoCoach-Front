@@ -186,7 +186,7 @@ export default class Catalog extends Component {
 ).then(function (response) {
   
   
-  this.setState({ nbCoach: response.data}) 
+  this.setState({ nbCoach: response.data.content}) 
   
 }.bind(this)
 ).catch(function (error){

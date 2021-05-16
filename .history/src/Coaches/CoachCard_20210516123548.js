@@ -73,8 +73,8 @@ export default class CoachCard extends Component {
 
     return (
       <Col height="auto">
-        <Card className="" style={{ height: "300px", width: "250px" }}>
-          <CardImg src={url}  alt="coach's picture" style={{ height: "160px" }} />
+        <Card className="" style={{ height: "275px", width: "250px" }}>
+          <CardImg src={url}  alt="coach's picture" style={{ height: "130px" }} />
           <CardBody>
             <CardTitle tag="h6">{this.state.name} </CardTitle>
             <ReviewModal

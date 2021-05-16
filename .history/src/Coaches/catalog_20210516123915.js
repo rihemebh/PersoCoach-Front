@@ -139,8 +139,8 @@ export default class Catalog extends Component {
     let direction = d ?? 0;
     let current = curr ?? 0;
    // let k = (key==null) ? this.state.key : key;
-   let rep = this.state.coaches;
-    const response =  axios.get(
+
+    const response =  axios(
       "catalog/coaches?page=" +
         current +
         "&size=" +
@@ -155,27 +155,15 @@ export default class Catalog extends Component {
         this.state.type +
         "&key="+
         this.state.key   
-    ).then(function (response) {
-       rep = response.data.content;
-       //console.log(rep);
-       this.setState({ coaches: rep}) 
-       
-      this.nbCoaches();
-    }.bind(this)
-    ).catch(function (error){
-     console.log(error);
-    })
-   
-   
-    }
-   
-   
-
-  
+    );
+    const body = await response.json();
+    this.setState({ coaches: body.content});
+    this.nbCoaches();
+  }
   
   /***************************** */
   async nbCoaches(){
-    const response1 =  axios.get("catalog/coachesNb?rate=" +
+    const response1 = await fetch("catalog/coachesNb?rate=" +
     this.state.rate +
     "&gender="+
     this.state.gender +
@@ -183,16 +171,9 @@ export default class Catalog extends Component {
     this.state.type+
     "&key="+
     this.state.key  
-).then(function (response) {
-  
-  
-  this.setState({ nbCoach: response.data}) 
-  
-}.bind(this)
-).catch(function (error){
-console.log(error);
-})
- 
+);
+    const body= await response1.json();
+    this.setState({ nbCoach: body })
   }
 
 
