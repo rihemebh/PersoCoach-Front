@@ -1,9 +1,8 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 // nodejs library that concatenates strings
 import classnames from "classnames";
-
+//
 // reactstrap components
 import FontAwesome from 'react-fontawesome'
 
@@ -18,8 +17,8 @@ import {
   Button,
 } from "reactstrap";
 
-function ProfileNav() {
-  const [navbarColor, setNavbarColor] = React.useState("navbar-transparent");
+function AccueilNav() {
+  const [navbarColor, setNavbarColor] = React.useState("navbar-black");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
 
   const toggleNavbarCollapse = () => {
@@ -33,12 +32,12 @@ function ProfileNav() {
         document.documentElement.scrollTop > 299 ||
         document.body.scrollTop > 299
       ) {
-        setNavbarColor("navbar-white");
+        setNavbarColor("");
       } else if (
         document.documentElement.scrollTop < 300 ||
         document.body.scrollTop < 300
       ) {
-        setNavbarColor("navbar-transparent");
+        setNavbarColor("navbar-dark");
       }
     };
 
@@ -63,7 +62,8 @@ function ProfileNav() {
             title="PersoCoach"
             tag={Link}
           >
-             <img src={require("assets/img/11.png").default} width="150px" height="28px"></img>
+          
+           <img src={require("assets/img/11.png").default} width="150px" height="28px"></img>
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
@@ -90,7 +90,7 @@ function ProfileNav() {
             </NavItem>
             <NavItem>
               <NavLink to="/Coaches" tag={Link}>
-                <i className="" /> Coaches
+                <p className="text-info " style={{borderBottom: "solid"}} > Coaches</p>
               </NavLink>
             </NavItem>
             <NavItem>
@@ -105,7 +105,7 @@ function ProfileNav() {
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://www.facebook.com/CreativeTim?ref=creativetim"
+                href=""
                 target="_blank"
                 title="Like us on Facebook"
               >
@@ -116,18 +116,7 @@ function ProfileNav() {
             <NavItem>
               <NavLink
                 data-placement="bottom"
-                href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
-                target="_blank"
-                title="Follow us on Instagram"
-              >
-                <i className="fa fa-linkedin" />
-                <p className="d-lg-none">Linkedin</p>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink
-                data-placement="bottom"
-                href="https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+                href=""
                 target="_blank"
                 title="Follow us on Instagram"
               >
@@ -136,10 +125,21 @@ function ProfileNav() {
               </NavLink>
             </NavItem>
             <NavItem>
+              <NavLink
+                data-placement="bottom"
+                href=""
+                target="_blank"
+                title="Follow us on Linkedin"
+              >
+                <i className="fa fa-linkedin" />
+                <p className="d-lg-none">Linkedin</p>
+              </NavLink>
+            </NavItem>
+            <NavItem>
          
-              <Button className="btn-round btn-info" href="/register-page" type="button">
+              <Button className="btn-round btn-info"  type="button">
                   <FontAwesome className="fas fa-user-plus" />
-                   <Link to="/signup">Sign up</Link>
+                   Sign up
                 </Button>
              
             </NavItem>
@@ -149,14 +149,15 @@ function ProfileNav() {
                   className="btn-round "
                   color="info"
                   outline
-                  href="/login"
                    type="button">
 
-                 <FontAwesome className="far fa-sign-in" /> 
-                 <Link to="/login">Sign in</Link>
+                 <FontAwesome className="far fa-sign-in" /> Sign in
                 </Button>
        </NavItem>
            
+            <NavItem>
+           
+            </NavItem>
           </Nav>
         </Collapse>
       </Container>
@@ -164,4 +165,4 @@ function ProfileNav() {
   );
 }
 
-export default ProfileNav;
+export default AccueilNav;

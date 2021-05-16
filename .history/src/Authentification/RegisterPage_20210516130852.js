@@ -1,10 +1,11 @@
 
 import React from "react";
 
-import { Button, Card, Form, Input, Container, Row, Col } from "reactstrap";
+import { Button, Card, Form, Input, Container, Row, Col, NavbarBrand ,NavLink} from "reactstrap";
 
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ProfileNav from "components/Navbars/ProfileNav";
+import { Link } from "react-router-dom";
 
 function RegisterPage() {
   document.documentElement.classList.remove("nav-open");
@@ -21,23 +22,28 @@ function RegisterPage() {
         className="page-header"
         style={{
           backgroundImage:
-            "url(https://www.myamericannurse.com/wp-content/uploads/2014/07/yoga-cross-leg-stuff.jpg)",
+            "url(https://www.heart.org/-/media/healthy-living-images/fitness/runner_tying_shoe.jpg)",
         }}
       >
         <div className="filter" />
         <Container>
           <Row>
             <Col className="ml-auto mr-auto" lg="4">
-              <Card className="ml-auto mr-auto" style={{backgroundColor: "#ffffff",
-                  borderRadius: "8px",
-                  color: "black",
-                  maxWidth: "350px",
-                  margin:" 20px 0 70px",
-                  minHeight: "500px",
-                  padding: "30px" }}>
+              <Card className="ml-auto mr-auto" 
+                    style={{backgroundColor: "#ffffff",
+                    borderRadius: "8px",
+                    color: "black",
+                    maxWidth: "350px",
+                    margin:" 20px 0 70px",
+                    minHeight: "500px",
+                    padding: "30px" }}>
                
+
                 <img  className="mx-auto" src={require("assets/img/Perso.png").default} width="250px" height="128px"></img>
             
+          
+                  
+
                 <div className="social-line text-center">
 
                   
@@ -67,26 +73,39 @@ function RegisterPage() {
                   </Button>*/}
                 </div>
                 <Form className="">
+                
                   <label style={{marginTop: "15px"}}>Email</label>
-                  <Input placeholder="Email" type="text" />
+                  <Input  placeholder="Email" 
+                          type="text" 
+                          
+                          />
+
+                  <label style={{marginTop: "15px"}}>Username</label>
+                  <Input placeholder="Username" type="text" />
+
                   <label style={{marginTop: "15px"}}>Password</label>
                   <Input placeholder="Password" type="password" />
                   <Button block className="btn-round" style={{marginTop: "30px" }}color="info">
-                    Login
+                    Sign up
                   </Button>
                 </Form>
                 <div className="forgot">
                   <Button
-                    className="btn-link text-center"
+                    className="btn-link"
                     color=""
                     href="#pablo"
                     onClick={(e) => e.preventDefault()}
                     style={{textAlign: 'center'}}
                   >
-                    Forgot password?
+                  <NavLink to='/login'  tag={Link} className='link' >
+                  Already a member? <span style={{textDecoration:"underline"}}>Sign in</span>  </NavLink>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 6acf96f8a35129b8ebb9302100eb49225067a5ae
                   </Button>
                 </div>
-              </Card> 
+              </Card>
             </Col>
           </Row>
         </Container>
