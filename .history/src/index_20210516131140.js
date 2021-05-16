@@ -21,7 +21,7 @@ import Coach from "Coaches/Coach";
 import Login from "Authentification/Login";
 import SignUp from "Authentification/SignUp";
 import App from "App";
-//import Register from "Authentification/components/register.component";
+import Register from "Authentification/components/register.component";
 
 // others
 
@@ -56,7 +56,10 @@ ReactDOM.render(
         path="/register-page"
         render={(props) => <RegisterPage {...props} />}
       />
-
+        <Route
+        path="/sign-up"
+        render={(props) => <Register {...props} />}
+      />
       <Route
       path="/signup"
       render={(props) => <SignUp {...props} />}
