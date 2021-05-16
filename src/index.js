@@ -55,10 +55,7 @@ ReactDOM.render(
         path="/Coach/:id"
         render={(props) => <Coach {...props} />}
       />
-      <Route
-        path="/register-page"
-        render={(props) => <RegisterPage {...props} />}
-      />
+
       <Route
       path="/signup"
       render={(props) => <SignUp {...props} />}
