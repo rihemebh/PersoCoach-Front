@@ -65,7 +65,7 @@ ReactDOM.render(
         path="/login"
         render={(props) => <Login {...props} />}
       />
-      <Redirect to="/signup" />
+      <Redirect to="/index" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

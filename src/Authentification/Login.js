@@ -59,11 +59,11 @@ export class Login extends Component{
                 this.props.history.push({
                   pathname: '/app',
                   state: { accessToken: this.state.accessToken }});
-                window.location.reload();
+                window.location.reload()
             },
         ).catch(
             error => {
-                const errMsg = error.response.data
+                const errMsg = error.data
 
                 this.setState({
                     loading: false,
@@ -105,7 +105,7 @@ export class Login extends Component{
             
 
 
-                { this.state.errMsg.length>0 ? (
+                { this.state.errMsg != undefined ? (
                     <Alert color="danger">
                   {this.state.errMsg}
                   </Alert>
