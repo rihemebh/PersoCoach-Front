@@ -14,13 +14,12 @@ import Index from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
-import RegisterPage from "Authentification/RegisterPage";
-import LoginPage from "Authentification/LoginPage";
 import Catalog from "Coaches/Catalog";
 import Coach from "Coaches/Coach";
 import Login from "Authentification/Login";
 import SignUp from "Authentification/SignUp";
 import App from "App";
+import Profile from "components/Profile";
 
 // others
 
@@ -51,14 +50,8 @@ ReactDOM.render(
         path="/Coach/:id"
         render={(props) => <Coach {...props} />}
       />
-      <Route
-        path="/register-page"
-        render={(props) => <RegisterPage {...props} />}
-      />
-        <Route
-        path="/sign-up"
-        render={(props) => <Register {...props} />}
-      />
+     
+       
       <Route
       path="/signup"
       render={(props) => <SignUp {...props} />}
@@ -66,6 +59,10 @@ ReactDOM.render(
       <Route
         path="/login"
         render={(props) => <Login {...props} />}
+      />
+      <Route
+        path="/profile"
+        render={(props) => <Profile {...props} />}
       />
       <Redirect to="/signup" />
     </Switch>

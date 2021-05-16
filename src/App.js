@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 
 import AuthService from "./Authentification/AuthService"
-import Login from "./Authentification/Login"
 
-import { SignUp } from "./Authentification/SignUp"
-
-import {Router} from "react-router";
 
 class App extends Component {
 
