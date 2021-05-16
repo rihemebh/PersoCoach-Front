@@ -41,7 +41,7 @@ import SectionLogin from "views/index-sections/SectionLogin.js";
 import SectionExamples from "views/index-sections/SectionExamples.js";
 import SectionDownload from "views/index-sections/SectionDownload.js";
 import Accueil from 'views/accueil/Accueil.js';
-
+import Feed from 'views/feed/Feed.js';
 function Index() {
   document.documentElement.classList.remove("nav-open");
   React.useEffect(() => {
@@ -52,7 +52,7 @@ function Index() {
   });
   return (
     <>
-    {/*   <IndexNavbar />
+      <IndexNavbar />
       <IndexHeader />
       <div className="main">
         <SectionButtons />
@@ -69,8 +69,8 @@ function Index() {
         <SectionExamples />
         <SectionDownload />
       <DemoFooter />
-  </div> */}
-  <Accueil/> 
+  </div>
+  {/* <Accueil/>  */}
     </>
   );
 }

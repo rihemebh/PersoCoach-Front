@@ -20,21 +20,10 @@ function AccueilHeader() {
           <Container>
             <div className="title-brand">
               <h1 className="presentation-title">PersoCoach</h1>
-              <div className="fog-low">
-                <img
-                  alt="..."
-                  src={require("assets/img/fog-low.png").default}
-                />
-              </div>
-              <div className="fog-low right">
-                <img
-                  alt="..."
-                  src={require("assets/img/fog-low.png").default}
-                />
-              </div>
+             
             </div>
             <h2 className="presentation-subtitle text-center">
-              All the personal coaches in just one place and it's up to you to choose!
+              All the personal coaches in just one place.
             </h2>
           </Container>
         </div>

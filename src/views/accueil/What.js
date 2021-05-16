@@ -1,5 +1,4 @@
 import React from 'react';
-import CarouselCoach from "views/accueil/CarouselCoach.js";
 import {
     Container,
     Row,
@@ -29,6 +28,9 @@ const What = () =>{
                   alt="..."
                   className="img-thumbnail img-responsive"
                   src={require("assets/img/whatTransparentresized.png").default}
+                  style={{
+                    justifyContent: 'right',
+                    alignItems: 'right'}}
                 />
             
         </Col>
