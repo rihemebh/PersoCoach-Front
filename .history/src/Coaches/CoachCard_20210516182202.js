@@ -39,14 +39,17 @@ export default class CoachCard extends Component {
 
     let nb = 0;
     const length = this.state.reviews.length;
- 
-    //var TotalReviews = [];
-    let x= this.state.reviews[0];
-    
-    length == 0 && this.state.reviews != undefined
-      ? (nb=0)
-      : ( nb = x.coach.rate);
-      console.log(nb);
+    console.log(this.state.reviews);
+    var TotalReviews = 0;
+    length == 0
+      ? (TotalReviews = [])
+      : (TotalReviews = this.state.reviews[length-1].;
+        }));
+
+    TotalReviews.forEach((element) => {
+      nb = nb + element;
+    });
+    length == 0 ? (nb = 0) : (nb = nb / length);
     for (let i = 0; i < 5; i++) {
       if (nb > 0) {
         rate.push(

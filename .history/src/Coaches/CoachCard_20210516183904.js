@@ -46,7 +46,6 @@ export default class CoachCard extends Component {
     length == 0 && this.state.reviews != undefined
       ? (nb=0)
       : ( nb = x.coach.rate);
-      console.log(nb);
     for (let i = 0; i < 5; i++) {
       if (nb > 0) {
         rate.push(

@@ -9,6 +9,7 @@ import {
   Container, 
   Row, 
   Col, 
+  NavbarBrand ,
   NavLink} from "reactstrap";
 import ProfileNav from "components/Navbars/ProfileNav";
 import { Link } from "react-router-dom";
@@ -102,31 +103,19 @@ export class SignUp extends React.Component {
 
     onSignUp(e){
         e.preventDefault();
-          console.log("signing up..");
+
         AuthService.register(
             this.state.username,
             this.state.email,
             this.state.password
             ).then(
                 response => {
-                  
                     this.setState({
                         postSubmitMessage: true,
                         message: response.data,
                         successful: true
                     });
-                  console.log("logging in..")  
-                    AuthService.login(this.state.username,this.state.password)
-                    .then(
-                      response => {
-                        console.log("redirecting..") 
-                        this.props.history.push({
-                        pathname: '/profile'});
-                        window.location.reload(); 
-                        console.log(this.state);
-                      }
-                    )
-                    
+                    console.log(this.state);
                 },
             ).catch(
               err => {
@@ -134,7 +123,7 @@ export class SignUp extends React.Component {
                   postSubmitMessage: true,
                   message: err.data,
                   successful: false
-              });
+              }.bind(this));
               console.log(this.state);
               }
             );
@@ -144,6 +133,7 @@ export class SignUp extends React.Component {
     render() {
         const errors = this.validate(this.state.email, this.state.username, this.state.password);
         //console.log(errors)
+        const isEnabled = !Object.keys(errors).some(x => errors[x]);
         const shouldMarkError = (field) => {
           const hasError = errors[field];
           const shouldShow = this.state.touched[field];
@@ -175,7 +165,7 @@ export class SignUp extends React.Component {
                     minHeight: "500px",
                     padding: "30px" }}>
                
-                <img  className="mx-auto" src={require("assets/img/Perso.png").default} alt="user.img" width="250px" height="128px"></img>
+                <img  className="mx-auto" src={require("assets/img/Perso.png").default} width="250px" height="128px"></img>
             
     
 

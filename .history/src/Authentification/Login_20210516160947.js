@@ -11,9 +11,12 @@ import {
   Container, 
   Row, 
   Col, 
-  } from "reactstrap";
+  NavbarBrand,
+  NavLink} from "reactstrap";
 
+import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
 import ProfileNav from "components/Navbars/ProfileNav";
+import { Link } from "react-router-dom";
 import AuthService from "./AuthService";
 
 export class Login extends Component{
@@ -42,30 +45,21 @@ export class Login extends Component{
             loading: true
         }); 
 
-        console.log("logging in..")
         AuthService.login(
             this.state.username,
             this.state.password
         ).then(
             data => {
-              console.log("logged in!")
                 this.setState({
                   loading: false,
                   successful: true,
                   message: "auth successful",
                   accessToken: data.accessToken
                 })
-
                 this.props.history.push({
                   pathname: '/app',
                   state: { accessToken: this.state.accessToken }});
                 window.location.reload()
-
-                console.log("redirecting..")
-                 this.props.history.push({
-                  pathname: '/profile'});
-                  window.location.reload(); 
-
             },
         ).catch(
             error => {
@@ -78,11 +72,12 @@ export class Login extends Component{
                 });                
             }
         );
-        console.log(this.state);
+        //console.log(this.state);
 
     }
 
     render(){
+        console.log(this.state);
         return(
             <>
             <ProfileNav />
@@ -106,7 +101,7 @@ export class Login extends Component{
                     minHeight: "500px",
                     padding: "30px" }}>
                
-                <img  className="mx-auto" src={require("assets/img/Perso.png").default} alt="user.img" width="250px" height="128px"></img>
+                <img  className="mx-auto" src={require("assets/img/Perso.png").default} width="250px" height="128px"></img>
             
 
 

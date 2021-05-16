@@ -58,6 +58,11 @@ ReactDOM.render(
         path="/register-page"
         render={(props) => <RegisterPage {...props} />}
       />
+
+=======
+     
+       
+>>>>>>> 96a0a6aab62fa9582e2fbb23ea84b813025b1101
       <Route
       path="/signup"
       render={(props) => <SignUp {...props} />}
@@ -66,13 +71,11 @@ ReactDOM.render(
         path="/login"
         render={(props) => <Login {...props} />}
       />
-
       <Route
         path="/profile"
         render={(props) => <Profile {...props} />}
       />
       <Redirect to="/signup" />
-
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

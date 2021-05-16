@@ -35,37 +35,11 @@ export default class CoachCard extends Component {
   render() {
     const url = this.state.img;
 
-    const rate = [];
+   // const rate = [];
 
-    let nb = 0;
-    const length = this.state.reviews.length;
- 
-    //var TotalReviews = [];
-    let x= this.state.reviews[0];
-    
-    length == 0 && this.state.reviews != undefined
-      ? (nb=0)
-      : ( nb = x.coach.rate);
-      console.log(nb);
-    for (let i = 0; i < 5; i++) {
-      if (nb > 0) {
-        rate.push(
-          <FontAwesome
-            className="fas fa-star text-warning"
-            name="star"
-          ></FontAwesome>
-        );
-        nb--;
-      } else {
-        rate.push(
-          <FontAwesome
-            className="far fa-star "
-            name="star"
-            style={{ color: "#d9d9d9" }}
-          ></FontAwesome>
-        );
-      }
-    }
+    //let nb = 0;
+   // const length = this.state.reviews.length;
+  
 
     return (
       <Col height="auto">
