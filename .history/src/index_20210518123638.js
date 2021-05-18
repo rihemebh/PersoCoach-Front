@@ -15,7 +15,7 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
 import Catalog from "Coaches/views/Catalog";
-import Coach from "Coaches/views/Coach";
+import Coach from "Coaches/Coach";
 import Login from "Authentification/Login";
 import SignUp from "Authentification/SignUp";
 import App from "App";
@@ -39,7 +39,6 @@ ReactDOM.render(
         path="/nucleo-icons"
         render={(props) => <NucleoIcons {...props} />}
       />
-      
       <Route
         path="/landing-page"
         render={(props) => <LandingPage {...props} />}
