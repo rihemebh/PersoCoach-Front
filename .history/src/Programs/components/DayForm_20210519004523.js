@@ -60,7 +60,7 @@ console.log(detailedProgram);
 this.state.nb == 1 ? axios.put("http://localhost:3000/api/program/add", detailedProgram).then(function (response) {
     const notify = () => toast.success("Your day program was successfully added !");
     notify();
-    var button = document.getElementById(this.state.id);
+    var button = document.getElementById('submit1');
  
     button.disabled = true
   }.bind(this))

@@ -24,7 +24,6 @@ class DayForm extends Component {
             nb : this.props.day ,
             restrictionNb: 0,
             extra: false,
-            id: "submit"+this.props.day,
             
         
         }
@@ -60,9 +59,9 @@ console.log(detailedProgram);
 this.state.nb == 1 ? axios.put("http://localhost:3000/api/program/add", detailedProgram).then(function (response) {
     const notify = () => toast.success("Your day program was successfully added !");
     notify();
-    var button = document.getElementById(this.state.id);
- 
-    button.disabled = true
+    var button = document.getElementById('submit1');
+    console.log(button)
+    button.disa
   }.bind(this))
   .catch(function (error) {
     const notify = () => toast.error("We can't send your submission !");
@@ -77,8 +76,6 @@ this.props.clearDay(this.state.nb);
 
 
 render() { 
-    console.log(this.state.id);
-   console.log(document.getElementById(this.state.id));
         return ( <>
 <hr></hr>
               
@@ -197,7 +194,7 @@ render() {
                    </span> 
                 
                       <div className="">
-                        <Button type="submit" id={this.state.id} onValidSubmit={this.handleValidSubmit} >
+                        <Button type="submit" id='submit1' onValidSubmit={this.handleValidSubmit} >
                           Send the program
                         </Button>
                       </div>

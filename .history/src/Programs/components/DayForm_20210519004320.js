@@ -24,7 +24,7 @@ class DayForm extends Component {
             nb : this.props.day ,
             restrictionNb: 0,
             extra: false,
-            id: "submit"+this.props.day,
+            id: "submit"+nb
             
         
         }
@@ -60,7 +60,7 @@ console.log(detailedProgram);
 this.state.nb == 1 ? axios.put("http://localhost:3000/api/program/add", detailedProgram).then(function (response) {
     const notify = () => toast.success("Your day program was successfully added !");
     notify();
-    var button = document.getElementById(this.state.id);
+    var button = document.getElementById('submit1');
  
     button.disabled = true
   }.bind(this))
@@ -77,8 +77,8 @@ this.props.clearDay(this.state.nb);
 
 
 render() { 
-    console.log(this.state.id);
-   console.log(document.getElementById(this.state.id));
+    console.log("haja");
+   console.log(document.getElementById('submit'+this.state.nb));
         return ( <>
 <hr></hr>
               
