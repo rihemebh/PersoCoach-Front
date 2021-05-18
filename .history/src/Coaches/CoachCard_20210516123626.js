@@ -92,7 +92,7 @@ export default class CoachCard extends Component {
               tag={Link}
               className="btn-link mr-1 btn text-center text-secondary"
             >
-              See More <FontAwesome className="fa-chevron-circle-right" />
+              See More <FontAwesome name="chevron" className="fa-chevron-circle-right" />
             </a>
           </CardFooter>
         </Card>

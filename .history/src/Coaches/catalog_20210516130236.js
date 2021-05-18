@@ -160,7 +160,7 @@ export default class Catalog extends Component {
        //console.log(rep);
        this.setState({ coaches: rep}) 
        
-      this.nbCoaches();
+      //this.nbCoaches();
     }.bind(this)
     ).catch(function (error){
      console.log(error);
@@ -186,8 +186,9 @@ export default class Catalog extends Component {
 ).then(function (response) {
   
   
-  this.setState({ nbCoach: response.data}) 
+  this.setState({ nbCoach: response.data.content}) 
   
+ //this.nbCoaches();
 }.bind(this)
 ).catch(function (error){
 console.log(error);

@@ -160,7 +160,7 @@ export default class Catalog extends Component {
        //console.log(rep);
        this.setState({ coaches: rep}) 
        
-      this.nbCoaches();
+      //this.nbCoaches();
     }.bind(this)
     ).catch(function (error){
      console.log(error);
@@ -183,16 +183,9 @@ export default class Catalog extends Component {
     this.state.type+
     "&key="+
     this.state.key  
-).then(function (response) {
-  
-  
-  this.setState({ nbCoach: response.data}) 
-  
-}.bind(this)
-).catch(function (error){
-console.log(error);
-})
- 
+).then()
+    const body= await response1.json();
+    this.setState({ nbCoach: body })
   }
 
 

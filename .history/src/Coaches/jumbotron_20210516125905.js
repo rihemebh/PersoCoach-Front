@@ -15,18 +15,23 @@ export default class Jumb extends Component {
   constructor(props){
     super(props);
     this.state={
-     
+      key: "",
     }
-  
+    this.updateInputValue=this.updateInputValue.bind(this);
     this.handleSearch= this.handleSearch.bind(this);
   }
-  handleSearch = (e)=>{
-    this.props.updatekey(e.target.value)
+  handleSearch = ()=>{
+    this.props.updatekey(this.state.key)
   }
 
+updateInputValue = (e)=>
+{ const x = e.target.value;
 
+  this.setState({
+    key : x,
+  });
 
-
+} 
 
 render() {
     const picStyle = {
@@ -64,7 +69,7 @@ render() {
  <InputGroup className="form-group-no-border">
                     <InputGroupAddon addonType="prepend">
                     </InputGroupAddon>
-                    <Input placeholder="Search.."  onChange={this.handleSearch} />
+                    <Input placeholder="Search.." onChange={this.updateInputValue} onChange={this.handleSearch} />
                    <button className="btn-sm btn-light border"  >
                   <FontAwesome className="text-secondary fa-search" >
                     </FontAwesome>
