@@ -42,14 +42,8 @@ export default class CoachModal extends React.Component {
     });
   };
 
-   showtoastSuccess = ()=>{
-     return toast("Wow so easy!");
-   }
-   showtoastFail = ()=>{
-    return toast("Wow so easy!");
-  }
-  saveRequest = async () => {
-
+  saveRequest =  () => {
+console.log(this.props.id);
     axios.put(
       "http://localhost:3000/catalog/coach/" +
         this.props.id +
@@ -80,10 +74,12 @@ export default class CoachModal extends React.Component {
 
 
 this.toggleModal();
+console.log("endsaverequest");
+};
 
-   
-  };
+
   handleValidSubmit(event, values) {
+
     this.setState(
       {
         name: values.name,
@@ -95,7 +91,7 @@ this.toggleModal();
         //pic: values.file,
         practice: values.select1,
       },
-     async()=> this.saveRequest()
+     ()=> this.saveRequest()
     );
   }
 
@@ -113,7 +109,6 @@ this.toggleModal();
       
         <Row id="modals">
           <Col>
-            {/* Button trigger modal */}
             <Button
               className="btn-round"
               color="warning"
@@ -154,27 +149,31 @@ this.toggleModal();
                 <h6> Welcome to the journey</h6>
                 Once you fill this form you will get a brief personalized
                 program from the coach in 2 or 3 days
-                <br></br>
-                <br></br>
+                <br></br><br></br>
                 <small className="text-right text-danger">
                   * Required field
+                <br></br>
                 </small>
+                <br></br>
               
-              <div class="container">
+           
+              <div className="container">
                 <Container>
                   <AvForm
                     onValidSubmit={this.handleValidSubmit}
                     onInvalidSubmit={this.handleInvalidSubmit}
                   >
                     <h6>
-                      <AvField name="Name" label=" Name *" type="text" required />
+                    Name <span className='text-danger'>*</span>
+                      <AvField name="name" type="text" required />
                     </h6>
                     <h6>
-                      <AvField name="age" label=" Age *" type="number" required />
-                    </h6>
+                    Age <span className='text-danger'>*</span></h6>
+                      <AvField name="age" type="number" required />
+                    
                     <FormGroup>
                       <Label for="exampleSelect">
-                        <h6>Gender *</h6>
+                        <h6>Gender <span className="text-danger">*</span></h6>
                       </Label>
                       <AvField
                         type="select"
@@ -188,24 +187,26 @@ this.toggleModal();
                       </AvField>
                     </FormGroup>
                     <h6>
+                    Weight <span className='text-danger'>*</span>
                       <AvField
                         name="weight"
-                        label=" Weight *"
+                     
                         type="number"
                         required
                       />
                     </h6>
                     <h6>
+                    Height <span className='text-danger'>*</span>
                       <AvField
                         name="height"
-                        label=" Height *"
+                      
                         type="number"
                         required
                       />
                     </h6>
                     <FormGroup>
                       <Label for="exampleSelect1">
-                        <h6>How often do you exercice ? *</h6>
+                        <h6>How often do you exercice ? <span className="text-danger">*</span></h6>
                       </Label>
                       <AvField
                         type="select"
@@ -222,14 +223,14 @@ this.toggleModal();
                     </FormGroup>
                     <FormGroup>
                       <h6>
-                        {" "}
+                      Goal <span className='text-danger'>*</span>
+                        </h6>
                         <AvField
                           name="goal"
-                          label="Goal *"
+                        
                           type="textarea"
                           required
-                        />
-                      </h6>
+                        ></AvField>
                       <FormText>
                         Example: I want to change my lifestyle / I want to loose
                         weight ...
@@ -249,12 +250,7 @@ this.toggleModal();
 
                     {/* <AvField type="radio"  name="radio1" required></AvField> <span> I accept all the terms and conditions *</span>
                      */}
-                         </AvForm>
-                         </Container></div>
-                    <Container className="text-right"></Container>
-                    <br></br>
-             
-                    <div className="modal-footer">
+                          <div className="modal-footer">
                       <div className="">
                         <Button type="submit" onSubmit={this.handleValidSubmit} >
                           Submit your request
@@ -271,6 +267,11 @@ this.toggleModal();
                         </Button>
                       </div>
                     </div>
+                         </AvForm>
+                         </Container></div>
+                
+             
+               
                   
            
                 

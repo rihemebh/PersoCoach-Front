@@ -132,7 +132,7 @@ export class SignUp extends React.Component {
               err => {
                 this.setState({
                   postSubmitMessage: true,
-                  message: err.response.data,
+                  message: err.data,
                   successful: false
               });
               console.log(this.state);

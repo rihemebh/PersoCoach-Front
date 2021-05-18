@@ -137,7 +137,7 @@ function ProfileNav() {
             </NavItem>
             <NavItem>
          
-              <Button className="btn-round btn-info"  type="button">
+              <Button className="btn-round btn-info" href="/register-page" type="button">
                   <FontAwesome className="fas fa-user-plus" />
                    <Link to="/signup">Sign up</Link>
                 </Button>
@@ -149,6 +149,7 @@ function ProfileNav() {
                   className="btn-round "
                   color="info"
                   outline
+                  href="/login"
                    type="button">
 
                  <FontAwesome className="far fa-sign-in" /> 
