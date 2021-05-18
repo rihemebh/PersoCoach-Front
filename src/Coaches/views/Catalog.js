@@ -178,9 +178,14 @@ export default class Catalog extends Component {
         this.nbCoaches();
         this.findCoaches(0,0);
       });
-      document.getElementById('bothgender').checked = true
-      document.getElementById('bothspeciality').checked = true
+    
      var x = document.getElementsByClassName('form-check-input');
+
+    var n = x.length;
+    for (var i =0; i<n;i++){
+      x[i].checked=false
+    }
+    
       //console.log()
     }
 
@@ -214,8 +219,7 @@ console.log(error);
     this.setState({gender:"", rate: 5 , type: "", filter: false, key:"",  },async ()  =>{
       this.nbCoaches();
     });
-    document.getElementById('bothgender').checked = true
-    document.getElementById('bothspeciality').checked = true
+
   }
   componentDidUpdate(){
     console.log(this.state.CurrentPage);
@@ -279,16 +283,7 @@ console.log(error);
 
                   <hr></hr>
                   <div style={{ margin: "10px" }}>Gender</div>
-                  <div className="form-check-radio">
-            
-            <Label check>
-              <Input id="bothgender"  defaultValue="option1"
-             
-                name="exampleRadios1" type="radio" />
-              both <span className="form-check-sign" />
-            </Label>
-          
-       </div>
+   
                   <div className="form-check-radio">
             
                     <Label check>
@@ -311,18 +306,7 @@ console.log(error);
 
                   <div style={{ margin: "10px" }}>Specialty </div>
        
-       <div className="form-check-radio">
-                    <Label check>
-                      <Input
-                        defaultValue="option2"
-                        id="bothspeciality"
-                        name="exampleRadios"
-                        type="radio"
-                        onClick={()=>this.onClickRadio(1)}
-                      />
-                      both <span className="form-check-sign" />
-                    </Label>
-                  </div>
+    
                   <div className="form-check-radio">
                     <Label check>
                       <Input
