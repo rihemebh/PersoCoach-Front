@@ -27,7 +27,7 @@ class DayForm extends Component {
             extra: false,
             id: "submit"+this.props.day,
             other: false,
-            selected : ""
+            
         
         }
         this.handleValidSubmit = this.handleValidSubmit.bind(this);
@@ -38,11 +38,9 @@ class DayForm extends Component {
     
     document.getElementById('exampleSelect').value === "other"
 ?      this.setState({
-  other : true
- 
-}):this.setState({
-  other : false
-})
+        other : true
+      }):console.log('no')
+
     }
 handleValidSubmit(event,values){
   console.log(values.water)
@@ -62,7 +60,7 @@ var detailedProgram = {
                 lunch: values.lunch,
                  dinner: values.dinner,
                 extra: this.state.extra ? values.extra : "",
-                WaterQuantity: this.state.other == true ? values.other : values.water,
+                WaterQuantity: values.water,
                 restrictions:values.restrictions,
                 videos: values.video,
                 activitydesritpion: values.desc
@@ -151,26 +149,9 @@ render() {
                        }
                       </div> 
                    <br></br>
-                   {this.state.other ? <div class="form-inline">
+                   {this.state.other ? <div class="form-inline">: <></>}
                    
                   
-                     
-                    
-                   <h6 className="text-white" style={{ marginBottom: "10px"}}>
-                   Water / <small>Day</small> (L) <span className='text-danger'>*</span>
-                    <small className="text-white"><AvField
-                        name="other"
-                        label= "Other :"
-                        className="col-lg-12"
-                         placeholder=""
-                        type="number"
-                        required
-                        
-                      /></small>  
-                    </h6>
-                  
-                  
-                  </div> : 
                         <h6 className="text-white">Water / <small>Day</small> (L) <span className="text-danger">*</span>
                       
                       
@@ -181,7 +162,7 @@ render() {
                         id="exampleSelect"
                         className="col-lg-12"
                         required
-                     
+                        style={{marginTop:  "10px", marginBottom:  "10px",marginRight:  "20px"}}
                       >
                         <option>-- Not selected --</option>
                         <option value="1">1</option>
@@ -194,7 +175,21 @@ render() {
                       >other</option>
                       </AvField>
                       </h6>
-                    }
+                   {this.state.other ?  
+                   <h6 className="text-white" style={{marginTop: "10px", marginLeft: "10px", marginBottom: "10px"}}>
+                   Other: (L) <span className='text-danger'>*</span>
+                      <AvField
+                        name="other"
+                        className="col-lg-12"
+                         placeholder=""
+                        type="number"
+                        required
+                        
+                      />
+                    </h6>
+                  
+                   : console.log("not other")}
+                    {this.state.other ? </div> : <>
                    <div class="form-inline">
                    <h6 className="text-white">
                     Restrictions <span className='text-danger'>*</span>
@@ -204,7 +199,7 @@ render() {
                          placeholder=""
                         type="text"
                         required
-                        style={{marginTop: "5px", marginBottom: "10px"}}
+                        style={{marginTop: "5px", marginRight: "20px", marginBottom: "10px"}}
                       />
                     </h6>
                     {/** <Button className="btn-round"  style={{marginTop: "10px",marginLeft: "10px"}} > 

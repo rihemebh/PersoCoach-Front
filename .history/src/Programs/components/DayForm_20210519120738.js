@@ -16,7 +16,6 @@ import {
     FormGroup,
     NavLink
     } from "reactstrap";
-import { convertToObject } from "typescript";
 class DayForm extends Component {
 
     constructor(props){
@@ -27,7 +26,7 @@ class DayForm extends Component {
             extra: false,
             id: "submit"+this.props.day,
             other: false,
-            selected : ""
+            
         
         }
         this.handleValidSubmit = this.handleValidSubmit.bind(this);
@@ -36,13 +35,11 @@ class DayForm extends Component {
   
     handleSelectChange(event,target,value){
     
-    document.getElementById('exampleSelect').value === "other"
-?      this.setState({
-  other : true
- 
-}):this.setState({
-  other : false
-})
+    document.getElementById('exampleSelect').value === "other "
+      this.setState({
+        other : true
+      })
+
     }
 handleValidSubmit(event,values){
   console.log(values.water)
@@ -62,7 +59,7 @@ var detailedProgram = {
                 lunch: values.lunch,
                  dinner: values.dinner,
                 extra: this.state.extra ? values.extra : "",
-                WaterQuantity: this.state.other == true ? values.other : values.water,
+                WaterQuantity: values.water,
                 restrictions:values.restrictions,
                 videos: values.video,
                 activitydesritpion: values.desc
@@ -151,37 +148,16 @@ render() {
                        }
                       </div> 
                    <br></br>
-                   {this.state.other ? <div class="form-inline">
-                   
-                  
-                     
-                    
-                   <h6 className="text-white" style={{ marginBottom: "10px"}}>
-                   Water / <small>Day</small> (L) <span className='text-danger'>*</span>
-                    <small className="text-white"><AvField
-                        name="other"
-                        label= "Other :"
-                        className="col-lg-12"
-                         placeholder=""
-                        type="number"
-                        required
-                        
-                      /></small>  
-                    </h6>
-                  
-                  
-                  </div> : 
-                        <h6 className="text-white">Water / <small>Day</small> (L) <span className="text-danger">*</span>
-                      
-                      
+                   <FormGroup>
+                      <Label for="exampleSelect">
+                        <h6 className="text-white">Water / <small>Day</small> (L) <span className="text-danger">*</span></h6>
+                      </Label>
                       <AvField
                         type="select"
                         onChange={this.handleSelectChange}
                         name="water"
                         id="exampleSelect"
-                        className="col-lg-12"
                         required
-                     
                       >
                         <option>-- Not selected --</option>
                         <option value="1">1</option>
@@ -193,8 +169,22 @@ render() {
                         <option value="other" 
                       >other</option>
                       </AvField>
-                      </h6>
-                    }
+                    </FormGroup>
+                   {this.state.other ?  <div class="form-inline">
+                   <h6 className="text-white">
+                   other: <span className='text-danger'>*</span>
+                      <AvField
+                        name="other"
+                        className="col-lg-12"
+                         placeholder=""
+                        type="text"
+                        required
+                        style={{marginTop: "5px", marginRight: "20px", marginBottom: "10px"}}
+                      />
+                    </h6>
+                    {/** <Button className="btn-round"  style={{marginTop: "10px",marginLeft: "10px"}} > 
+                      <FontAwesome className="fas fa-plus"></FontAwesome> </Button>    */}  
+                   </div> : console.log("not other")}
                    <div class="form-inline">
                    <h6 className="text-white">
                     Restrictions <span className='text-danger'>*</span>
@@ -204,7 +194,7 @@ render() {
                          placeholder=""
                         type="text"
                         required
-                        style={{marginTop: "5px", marginBottom: "10px"}}
+                        style={{marginTop: "5px", marginRight: "20px", marginBottom: "10px"}}
                       />
                     </h6>
                     {/** <Button className="btn-round"  style={{marginTop: "10px",marginLeft: "10px"}} > 

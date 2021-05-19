@@ -204,7 +204,7 @@ render() {
                          placeholder=""
                         type="text"
                         required
-                        style={{marginTop: "5px", marginBottom: "10px"}}
+                        style={{marginTop: "5px" marginBottom: "10px"}}
                       />
                     </h6>
                     {/** <Button className="btn-round"  style={{marginTop: "10px",marginLeft: "10px"}} > 

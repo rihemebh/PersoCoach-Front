@@ -158,7 +158,7 @@ render() {
                     
                    <h6 className="text-white" style={{ marginBottom: "10px"}}>
                    Water / <small>Day</small> (L) <span className='text-danger'>*</span>
-                    <small className="text-white"><AvField
+                    <small></small>  <AvField
                         name="other"
                         label= "Other :"
                         className="col-lg-12"
@@ -166,7 +166,7 @@ render() {
                         type="number"
                         required
                         
-                      /></small>  
+                      />
                     </h6>
                   
                   
@@ -204,7 +204,7 @@ render() {
                          placeholder=""
                         type="text"
                         required
-                        style={{marginTop: "5px", marginBottom: "10px"}}
+                        style={{marginTop: "5px", marginRight: "20px", marginBottom: "10px"}}
                       />
                     </h6>
                     {/** <Button className="btn-round"  style={{marginTop: "10px",marginLeft: "10px"}} > 
