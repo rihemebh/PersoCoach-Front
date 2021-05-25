@@ -1,5 +1,5 @@
 import React from "react";
-import AccueilNavbar from "views/accueil/AccueilNav.js";
+import AccueilNav from "views/accueil/AccueilNav.js";
 import AccueilHeader from "views/accueil/AccueilHeader.js";
 import AccueilFooter from "views/accueil/AccueilFooter.js";
 import BecomeCoach from 'views/accueil/BecomeCoach.js';
@@ -9,7 +9,7 @@ import Questions from "./Questions";
 const Accueil = () => {
    return( 
    <>
-   <AccueilNavbar />
+   <AccueilNav />
     <AccueilHeader/>
     <What/>
     <BecomeCoach />

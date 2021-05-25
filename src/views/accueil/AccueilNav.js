@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import classnames from "classnames";
 //
 // reactstrap components
-import FontAwesome from 'react-fontawesome'
+//import FontAwesome from '@fortawesome/react-fontawesome';
 
 import {
   Collapse,
@@ -63,7 +63,7 @@ function AccueilNav() {
             tag={Link}
           >
           
-           <img src={require("assets/img/11.png").default} width="150px" height="28px"></img>
+           <img src={require("assets/img/11.png").default} width="150px" height="28px" alt=".."/>
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
@@ -138,7 +138,7 @@ function AccueilNav() {
             <NavItem>
          
               <Button className="btn-round btn-info"  type="button">
-                  <FontAwesome className="fas fa-user-plus" />
+                  {/* <FontAwesome className="fas fa-user-plus" /> */}
                    Sign up
                 </Button>
              
@@ -151,7 +151,7 @@ function AccueilNav() {
                   outline
                    type="button">
 
-                 <FontAwesome className="far fa-sign-in" /> Sign in
+                 {/* <FontAwesome className="far fa-sign-in" /> */} Sign in
                 </Button>
        </NavItem>
            

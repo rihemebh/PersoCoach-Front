@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import classnames from "classnames";
 
 // reactstrap components
-import FontAwesome from 'react-fontawesome'
+//import FontAwesome from '@fortawesome/react-fontawesome';
 
 import {
   Collapse,
@@ -63,7 +63,7 @@ function ExamplesNavbar() {
             title="PersoCoach"
             tag={Link}
           >
-            <img src="11.png" height="53px" width="150px" />
+            <img src="11.png" height="53px" width="150px" alt=".."/>
           </NavbarBrand>
           <button
             aria-expanded={navbarCollapse}
@@ -127,7 +127,7 @@ function ExamplesNavbar() {
             <NavItem>
          
               <Button className="btn-round" color="#C8C9EC" type="button">
-                  <FontAwesome className="fas fa-user-plus" />
+                  {/* <FontAwesome className="fas fa-user-plus" /> */}
                    Sign up
                 </Button>
              
@@ -143,7 +143,7 @@ function ExamplesNavbar() {
                   
 
                 >
-                 <FontAwesome className="far fa-sign-in-alt" /> Sign in
+                 {/* <FontAwesome className="far fa-sign-in-alt" /> */} Sign in
                 </Button>
        </NavItem>
            
