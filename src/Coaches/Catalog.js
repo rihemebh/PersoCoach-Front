@@ -18,6 +18,8 @@ import {
 import FontAwesome from "react-fontawesome";
 import Filter from "./Filter";
 import Pagination from "react-js-pagination";
+import AuthService from "Authentification/AuthService";
+import ClientProfileNav from "Clients/ClientProfileNav"
 
 //backgroundColor: "#F9F9F9"
 export default class Catalog extends Component {
@@ -42,11 +44,14 @@ export default class Catalog extends Component {
       bestclass: "dropdown-header",
       worstclass: "",
       filter: false,
+      authenticated: false
     };
 
+    
+    
     this.nbCoaches=this.nbCoaches.bind(this);
-   this.findCoaches=this.findCoaches.bind(this);
-   this.updatekey=this.updatekey.bind(this);
+    this.findCoaches=this.findCoaches.bind(this);
+    this.updatekey=this.updatekey.bind(this);
 
   }
   updatekey= (k)=>{
@@ -181,6 +186,14 @@ export default class Catalog extends Component {
     this.setState({gender:"", rate: 5 , type: "", filter: false, key:""},async ()  =>{
       this.nbCoaches();
     });
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    if(!user){
+      this.setState({authenticated: false})
+    }else{
+      this.setState({authenticated: true})
+    }
+    console.log(this.state)
     
   }
 
@@ -193,8 +206,8 @@ export default class Catalog extends Component {
     let x = this.state.checkedRate;
     return (
       <div className="" style={{}}>
-        <CatalogNav />
-        <div style={{ height: "120px" }}></div>
+      <CatalogNav />
+      <div style={{ height: "120px" }}></div>
         <Jumb updatekey={this.updatekey}/>
 
         <div>

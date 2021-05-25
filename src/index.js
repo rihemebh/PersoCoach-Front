@@ -19,7 +19,7 @@ import Coach from "Coaches/Coach";
 import Login from "Authentification/Login";
 import SignUp from "Authentification/SignUp";
 import App from "App";
-import Profile from "components/Profile";
+import Profile from "Clients/Profile";
 
 // others
 
@@ -61,7 +61,7 @@ ReactDOM.render(
         render={(props) => <Login {...props} />}
       />
       <Route
-        path="/profile"
+        path="/client-profile"
         render={(props) => <Profile {...props} />}
       />
       <Redirect to="/signup" />
