@@ -18,9 +18,12 @@ import {
 import FontAwesome from "react-fontawesome";
 import Filter from "./Filter";
 import Pagination from "react-js-pagination";
+<<<<<<< HEAD
 import axios from "axios";
+=======
 import AuthService from "Authentification/AuthService";
 import ClientProfileNav from "Clients/ClientProfileNav"
+>>>>>>> 9b349c5e73776574bbc3531ecc82860dd4f757ba
 
 //backgroundColor: "#F9F9F9"
 export default class Catalog extends Component {

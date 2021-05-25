@@ -10,11 +10,10 @@ class AuthService {
             username,
             password
         });
-        console.log(response)
         if (response.data.accessToken) {
             localStorage.setItem("user", JSON.stringify(response.data));
         }
-        console.log(JSON.parse(localStorage.getItem("user")))
+        console.log(response)
         return response.data;
     }
 
@@ -23,7 +22,7 @@ class AuthService {
     }
 
     async register(username, email, password){
-        return await axios.post(API_URL_AUTH + "sign-up", {
+        return await axios.post(API_URL_AUTH + "signup", {
             username,
             email,
             password
@@ -32,9 +31,6 @@ class AuthService {
 
     async getCurrentUser(){
         const currentUser =  JSON.parse(localStorage.getItem("user"));
-        if(!currentUser){
-            return null;
-        }
         const response = await axios.get(API_URL_USER + "id/" + currentUser.id, {
             headers: {
                 'Authorization': 'Bearer ' + currentUser.accessToken
@@ -45,6 +41,7 @@ class AuthService {
 
      getCurrentUser2(){
         const currentUser =  JSON.parse(localStorage.getItem("user"));
+        
         return currentUser.data;
     }
 }

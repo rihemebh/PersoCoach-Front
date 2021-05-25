@@ -19,7 +19,7 @@ import AuthService from "./AuthService";
 export class Login extends Component{
     constructor(props){
         super(props);
-
+        AuthService.logout()
         this.onLogin = this.onLogin.bind(this)
         this.state={
             username: "",
@@ -58,12 +58,12 @@ export class Login extends Component{
                 console.log("redirecting..")
                  this.props.history.push({
                   pathname: '/Coaches'});
-                  window.location.reload(); 
+                 window.location.reload(); 
             },
         ).catch(
             error => {
                 const errMsg = error.response.data
-
+                console.log("error while logging in : "+ errMsg)
                 this.setState({
                     loading: false,
                     errMsg: errMsg,
@@ -73,6 +73,20 @@ export class Login extends Component{
         );
         console.log(this.state);
 
+    }
+
+    componentDidMount(){
+      document.documentElement.classList.remove("nav-open");
+      document.body.classList.add("register-page");
+    }
+    
+    componentWillUnmount(){
+      document.body.classList.remove("register-page");
+    } 
+    
+    componentDidUpdate(){
+      console.log(this.state.nbForm);
+      document.body.classList.add("register-page");
     }
 
     render(){

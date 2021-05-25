@@ -21,7 +21,7 @@ import SignUp from "Authentification/SignUp";
 import App from "App";
 
 import Profile from "Clients/Profile";
-
+>>>>>>> 9b349c5e73776574bbc3531ecc82860dd4f757ba
 
 
 // others
