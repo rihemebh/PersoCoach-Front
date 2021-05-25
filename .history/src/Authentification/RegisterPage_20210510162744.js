@@ -37,6 +37,11 @@ function RegisterPage() {
   minHeight: "500px",
   padding: "30px" }}>
                
+<<<<<<< HEAD:.history/src/Authentification/RegisterPage_20210510162744.js
+=======
+          
+
+>>>>>>> search:src/Authentification/RegisterPage.js
                 <img  className="mx-auto" src={require("assets/img/Perso.png").default} width="250px" height="128px"></img>
             
           

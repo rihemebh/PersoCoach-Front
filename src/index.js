@@ -14,13 +14,18 @@ import Index from "views/Index.js";
 import NucleoIcons from "views/NucleoIcons.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
-import Catalog from "Coaches/Catalog";
-import Coach from "Coaches/Coach";
+import Catalog from "Coaches/views/Catalog";
+import Coach from "Coaches/views/Coach";
 import Login from "Authentification/Login";
 import SignUp from "Authentification/SignUp";
 import App from "App";
 
 import Profile from "Clients/Profile";
+
+import Profile from "components/Profile";
+import RegisterPage from "Authentification/RegisterPage";
+import Test from "Programs/views/test";
+import ProgramForm from "Programs/views/ProgramForm.js";
 
 
 
@@ -37,6 +42,7 @@ ReactDOM.render(
         path="/nucleo-icons"
         render={(props) => <NucleoIcons {...props} />}
       />
+      
       <Route
         path="/landing-page"
         render={(props) => <LandingPage {...props} />}
@@ -44,6 +50,10 @@ ReactDOM.render(
       <Route
         path="/profile-page"
         render={(props) => <ProfilePage {...props} />}
+      />
+         <Route
+        path="/register"
+        render={(props) => <RegisterPage {...props} />}
       />
           <Route
         path="/Coaches"
@@ -62,11 +72,23 @@ ReactDOM.render(
         path="/login"
         render={(props) => <Login {...props} />}
       />
+
       <Route
         path="/client-profile"
         render={(props) => <Profile {...props} />}
       />
+
+<Route
+        path="/test"
+        render={(props) => <Test {...props} />}
+      />
+
+<Route
+        path="/program"
+        render={(props) => <ProgramForm {...props} />}
+      />
       <Redirect to="/signup" />
+
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

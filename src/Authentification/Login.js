@@ -55,6 +55,12 @@ export class Login extends Component{
                   message: "auth successful",
                   accessToken: data.accessToken
                 })
+
+                this.props.history.push({
+                  pathname: '/app',
+                  state: { accessToken: this.state.accessToken }});
+                window.location.reload()
+
                 console.log("redirecting..")
                  this.props.history.push({
                   pathname: '/Coaches'});
@@ -117,7 +123,7 @@ export class Login extends Component{
             
 
 
-                { this.state.errMsg.length>0 ? (
+                { this.state.errMsg != undefined ? (
                     <Alert color="danger">
                   {this.state.errMsg}
                   </Alert>
