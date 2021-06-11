@@ -6,11 +6,12 @@ import BecomeCoach from 'views/accueil/BecomeCoach.js';
 import BecomeMember from 'views/accueil/BecomeMember.js';
 import What from 'views/accueil/What.js';
 import Questions from "./Questions";
+import CatalogNav from "components/Navbars/CatalogNav";
 const Accueil = () => {
    return( 
    <>
-   <AccueilNavbar />
-    <AccueilHeader/>
+   <CatalogNav />
+   <AccueilHeader/>
     <What/>
     <BecomeCoach />
     <BecomeMember />

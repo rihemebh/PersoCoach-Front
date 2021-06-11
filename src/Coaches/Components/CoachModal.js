@@ -271,7 +271,7 @@ const API_URL_USER = "http://localhost:8080/api/user/";
                      */}
                           <div className="modal-footer">
                       <div className="">
-                        <Button type="submit" onSubmit={this.handleValidSubmit} >
+                        <Button type="submit" onValidSubmit={this.handleValidSubmit} >
                           Submit your request
                         </Button>
                       </div>

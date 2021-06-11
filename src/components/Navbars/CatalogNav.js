@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 // nodejs library that concatenates strings
 import classnames from "classnames";
 //
@@ -16,12 +16,20 @@ import {
   Nav,
   Container,
   Button,
+  Row
 } from "reactstrap";
+
+
+import AuthService from "Authentification/AuthService";
+
 
 function CatalogNav() {
   const [navbarColor, setNavbarColor] = React.useState("navbar-black");
   const [navbarCollapse, setNavbarCollapse] = React.useState(false);
 
+  const history = useHistory()
+  const authenticated = JSON.parse(localStorage.getItem("user"));
+  
   const toggleNavbarCollapse = () => {
     setNavbarCollapse(!navbarCollapse);
     document.documentElement.classList.toggle("nav-open");
@@ -48,6 +56,12 @@ function CatalogNav() {
       window.removeEventListener("scroll", updateNavbarColor);
     };
   });
+
+  const onSignOut = () => {
+    AuthService.logout();
+    history.push({pathname: '/login'}); 
+    } 
+
   return (
     <Navbar
       className={classnames("fixed-top", navbarColor)}
@@ -136,31 +150,40 @@ function CatalogNav() {
                 <p className="d-lg-none">Linkedin</p>
               </NavLink>
             </NavItem>
-            <NavItem>
-         
-              <a href="/register-page" ><Button className="btn-round btn-info"  type="button">
-                  <FontAwesome className="fas fa-user-plus" />
-                   Sign up
-                </Button>
-                </a>
-            </NavItem>
-            <NavItem>
-        
-         <a href="/login"><Button
-           
-           className="btn-round "
-           color="info"
-           outline
-            type="button" 
-            >
 
-          <FontAwesome className="far fa-sign-in" /> Sign in
-         </Button></a>  
-       </NavItem>
-           
-            <NavItem>
-           
-            </NavItem>
+            {authenticated ?  
+              <>
+                <NavItem>
+                 <Button className="btn-round btn-danger"  type="button" onClick={onSignOut}>
+                    <FontAwesome className="fas fa-sign-out" />
+                  </Button>
+                </NavItem>
+                  <Button className="btn-round btn-warning"  type="button" 
+                  onClick={ () => {history.push({pathname: '/client-profile'})} }>
+                    <FontAwesome className="fas fa-user" />Profile
+                  </Button>
+                <NavItem>
+
+                </NavItem>
+              </>
+            : 
+              <Row>
+                <NavItem>
+                <a href="/register-page" >
+                  <Button className="btn-round btn-info"  type="button">
+                    <FontAwesome className="fas fa-user-plus" />Sign up
+                  </Button>
+                </a>
+              </NavItem> 
+              <NavItem>
+                <a href="/login">
+                  <Button className="btn-round btn-info" outline type="button">
+                    <FontAwesome className="far fa-sign-in"/> Sign in
+                  </Button>
+                </a>  
+              </NavItem>
+              </Row>
+            }
           </Nav>
         </Collapse>
       </Container>

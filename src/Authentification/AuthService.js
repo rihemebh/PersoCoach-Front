@@ -10,10 +10,11 @@ class AuthService {
             username,
             password
         });
+        console.log(response)
         if (response.data.accessToken) {
             localStorage.setItem("user", JSON.stringify(response.data));
         }
-        console.log(response)
+        console.log(JSON.parse(localStorage.getItem("user")))
         return response.data;
     }
 
@@ -31,6 +32,9 @@ class AuthService {
 
     async getCurrentUser(){
         const currentUser =  JSON.parse(localStorage.getItem("user"));
+        if(!currentUser){
+            return null;
+        }
         const response = await axios.get(API_URL_USER + "id/" + currentUser.id, {
             headers: {
                 'Authorization': 'Bearer ' + currentUser.accessToken
@@ -41,7 +45,6 @@ class AuthService {
 
      getCurrentUser2(){
         const currentUser =  JSON.parse(localStorage.getItem("user"));
-        
         return currentUser.data;
     }
 }

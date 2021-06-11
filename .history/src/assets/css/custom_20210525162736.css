@@ -1,0 +1,12 @@
+.error {
+    border: 1px solid red;
+  }
+
+.error-msg{
+    color: red;
+    font-family: 'Brush Script MT',cursive;
+}
+    
+.custom-font{
+   // font-family: 'Brush Script MT', cursive;
+}

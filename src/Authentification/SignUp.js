@@ -109,7 +109,7 @@ export class SignUp extends React.Component {
             this.state.password
             ).then(
                 response => {
-                  
+                    console.log("signed up!")
                     this.setState({
                         postSubmitMessage: true,
                         message: response.data,
@@ -119,14 +119,16 @@ export class SignUp extends React.Component {
                     AuthService.login(this.state.username,this.state.password)
                     .then(
                       response => {
-                        console.log("redirecting..") 
-                        this.props.history.push({
-                        pathname: '/profile'});
-                        window.location.reload(); 
-                        console.log(this.state);
+                        console.log("logged in!")
                       }
                     )
-                    
+                    console.log("redirecting..") 
+                        this.props.history.push({
+                        pathname: '/client-profile',
+                        state: { authenticated: true}
+                      });
+                        window.location.reload(); 
+                        console.log(this.state);
                 },
             ).catch(
               err => {
@@ -140,6 +142,18 @@ export class SignUp extends React.Component {
             );
             //console.log(this.state);
     }
+
+    componentDidMount(){
+      document.documentElement.classList.remove("nav-open");
+      document.body.classList.add("register-page");
+   }
+   componentWillUnmount(){
+      document.body.classList.remove("register-page");
+   } 
+  componentDidUpdate(){
+      console.log(this.state.nbForm);
+      document.body.classList.add("register-page");
+  }
 
     render() {
         const errors = this.validate(this.state.email, this.state.username, this.state.password);
