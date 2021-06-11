@@ -4,9 +4,12 @@
 
 .error-msg{
     color: red;
+<<<<<<< Updated upstream
     font-family: 'Brush Script MT',cursive;
 }
     
 .custom-font{
     font-family: 'Brush Script MT', cursive;
+=======
+>>>>>>> Stashed changes
 }

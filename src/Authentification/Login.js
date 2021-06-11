@@ -82,6 +82,23 @@ export class Login extends Component{
 
     }
 
+<<<<<<< Updated upstream
+=======
+    componentDidMount(){
+      document.documentElement.classList.remove("nav-open");
+      document.body.classList.add("register-page");
+    }
+    
+    componentWillUnmount(){
+      document.body.classList.remove("register-page");
+    } 
+    
+    componentDidUpdate(){
+     
+      document.body.classList.add("register-page");
+    }
+
+>>>>>>> Stashed changes
     render(){
         return(
             <>
@@ -110,7 +127,7 @@ export class Login extends Component{
             
 
 
-                { this.state.errMsg != undefined ? (
+                { this.state.errMsg ? (
                     <Alert color="danger">
                   {this.state.errMsg}
                   </Alert>

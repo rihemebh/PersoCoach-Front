@@ -16,6 +16,8 @@ import axios from "axios";
 import { toast, ToastContainer,Zoom , Bounce } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 export default class CoachModal extends React.Component {
   constructor(props) {
     super(props);
@@ -42,8 +44,9 @@ export default class CoachModal extends React.Component {
     });
   };
 
-  saveRequest =  () => {
-console.log(this.props.id);
+  saveRequest =  async () => {
+
+    const currentUser =  JSON.parse(localStorage.getItem("user"));
     axios.put(
       "http://localhost:3000/catalog/coach/" +
         this.props.id +
@@ -57,8 +60,8 @@ console.log(this.props.id);
         this.state.height +
         "&weight=" +
         this.state.weight +
-        "&pic=" +
-        this.state.pic +
+        "&c=" +
+        currentUser.id +
         "&practice=" +
         this.state.practice
     ).then(function (response) {
@@ -102,8 +105,24 @@ console.log("endsaverequest");
   closeModal() {
     this.setState({ name: false, error: false });
   }
-  render() {
+
+  async getuser(){
+    const currentUser =  JSON.parse(localStorage.getItem("user"));
+ 
+  //  const API_URL_AUTH = "http://localhost:8080/api/auth/";
+const API_URL_USER = "http://localhost:8080/api/user/";
+    const response =  await axios.get(API_URL_USER + "id/" + currentUser.id, {
+        headers: {
+            'Authorization': 'Bearer ' + currentUser.accessToken
+         }
+        });
+    return response.data;
+ 
    
+  }
+   render() {
+    const currentUser =  JSON.parse(localStorage.getItem("user"));
+    console.log(currentUser)
     return (
       <Container>
       
