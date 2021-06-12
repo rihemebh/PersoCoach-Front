@@ -6,18 +6,29 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "availity-reactstrap-validation": "^2.7.1",
+    "axios": "^0.21.1",
     "classnames": "2.2.6",
+    "formik": "^2.2.6",
     "moment": "2.29.1",
     "node-sass": "5.0.0",
     "nouislider": "14.6.4",
-    "react": "17.0.2",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.5.2",
     "react-datetime": "3.0.4",
-    "react-dom": "17.0.2",
+    "react-dom": "^17.0.2",
+    "react-fontawesome": "^1.7.1",
+    "react-icon-checkbox": "^1.0.1",
     "react-icons": "^4.2.0",
+    "react-js-pagination": "^3.0.3",
     "react-router": "5.2.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "^4.0.3",
-    "reactstrap": "8.9.0"
+    "react-toastify": "^7.0.4",
+    "react-validation": "^3.0.7",
+    "reactstrap": "8.9.0",
+    "validator": "^13.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,6 +40,7 @@
     "minify-sass": "node-sass src/assets/scss/paper-kit.scss src/assets/css/paper-kit.min.css --output-style compressed",
     "map-sass": "node-sass src/assets/scss/paper-kit.scss src/assets/css/paper-kit.css --source-map true"
   },
+  "proxy": "http://localhost:8080/",
   "eslintConfig": {
     "extends": "react-app"
   },

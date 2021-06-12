@@ -13,13 +13,13 @@ const BecomeMember = () =>{
         <Container>
         <Row >
             <Col>
-        <CarouselCoach/>
+        <img alt=".." src={require("assets/img/coach3.jpg").default}  />
         </Col>
         <Col>
         <br></br> <br></br><br></br><br></br> <br></br>
         <div className="typography-line">
                 <p className="mb-0" >
-                    Tired of searching so hard and looking up the so many websites of personal coaches? Here you'll find everyone of them in one place and it is up to you to choose the one for you.
+                    Tired of searching so hard and looking up the so many websites of personal coaches?<br></br> Here you'll find everyone of them in one place and it is up to you to choose the one for you.
                 </p>
                 <br />
               
