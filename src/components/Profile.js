@@ -24,8 +24,6 @@ import DemoFooter from "components/Footers/DemoFooter.js";
 import AuthService from "Authentification/AuthService";
 
 
-
-
 export default class Profile extends React.Component{
 
 

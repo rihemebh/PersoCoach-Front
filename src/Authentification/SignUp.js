@@ -10,9 +10,11 @@ import {
   Row, 
   Col, 
   NavLink} from "reactstrap";
-import ProfileNav from "components/Navbars/ProfileNav";
+import AuthNav from "components/Navbars/AuthNav";
 import { Link } from "react-router-dom";
 import AuthService from "./AuthService";
+import { Redirect } from "react-router-dom";
+
 
 import "../assets/css/custom.css"
 
@@ -34,6 +36,7 @@ export class SignUp extends React.Component {
             message:'',
             postSubmitMessage: false,
             successful: false,
+            profileRedirect : "/client-profile"
         }
     }
 
@@ -122,19 +125,28 @@ export class SignUp extends React.Component {
                         console.log("logged in!")
                       }
                     )
-                    console.log("redirecting..") 
+                    /*console.log("redirecting..") 
                         this.props.history.push({
                         pathname: '/client-profile',
-                        state: { authenticated: true}
-                      });
-                        window.location.reload(); 
-                        console.log(this.state);
+                        state: { 
+                          authenticated: true,
+                          currentUserInfo: {
+                            "username" : this.props.currentUserInfo.username,
+                            "email" : this.props.currentUserInfo.email 
+                          }
+                        }
+                      });*/
+                      console.log("redirecting..")
+                      this.props.history.push({
+                       pathname: '/Coaches'});
+                      window.location.reload(); 
+                        
                 },
             ).catch(
               err => {
                 this.setState({
                   postSubmitMessage: true,
-                  message: err.response.data,
+                  message: err.response,
                   successful: false
               });
               console.log(this.state);
@@ -156,6 +168,11 @@ export class SignUp extends React.Component {
   }
 
     render() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      console.log(user)
+      if(user){
+        this.props.history.push({pathname: '/index'});  
+      }
         const errors = this.validate(this.state.email, this.state.username, this.state.password);
         //console.log(errors)
         const shouldMarkError = (field) => {
@@ -168,7 +185,7 @@ export class SignUp extends React.Component {
 
         return (
             <>
-            <ProfileNav />
+            <AuthNav />
       <div
         className="page-header"
         style={{

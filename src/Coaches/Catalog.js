@@ -1,7 +1,7 @@
 import DemoFooter from "components/Footers/DemoFooter";
 import CatalogNav from "components/Navbars/CatalogNav";
 import React, { Component } from "react";
-import CoachCard from "./CoachCard";
+import CoachCard from "../Coaches/CoachCard";
 import Jumb from "./jumbotron";
 import { Label, FormGroup, Input, Button } from "reactstrap";
 import { IconCheckbox } from "react-icon-checkbox";
@@ -18,8 +18,7 @@ import {
 import FontAwesome from "react-fontawesome";
 import Filter from "./Filter";
 import Pagination from "react-js-pagination";
-import AuthService from "Authentification/AuthService";
-import ClientProfileNav from "Clients/ClientProfileNav"
+import axios from "axios";
 
 //backgroundColor: "#F9F9F9"
 export default class Catalog extends Component {
@@ -44,14 +43,11 @@ export default class Catalog extends Component {
       bestclass: "dropdown-header",
       worstclass: "",
       filter: false,
-      authenticated: false
     };
 
-    
-    
     this.nbCoaches=this.nbCoaches.bind(this);
-    this.findCoaches=this.findCoaches.bind(this);
-    this.updatekey=this.updatekey.bind(this);
+   this.findCoaches=this.findCoaches.bind(this);
+   this.updatekey=this.updatekey.bind(this);
 
   }
   updatekey= (k)=>{
@@ -143,8 +139,8 @@ export default class Catalog extends Component {
     let direction = d ?? 0;
     let current = curr ?? 0;
    // let k = (key==null) ? this.state.key : key;
-
-    const response = await fetch(
+   let rep = this.state.coaches;
+    const response =  axios.get(
       "catalog/coaches?page=" +
         current +
         "&size=" +
@@ -159,15 +155,45 @@ export default class Catalog extends Component {
         this.state.type +
         "&key="+
         this.state.key   
-    );
-    const body = await response.json();
-    this.setState({ coaches: body.content});
-    this.nbCoaches();
-  }
+    ).then(function (response) {
+       rep = response.data.content;
+       //console.log(rep);
+       this.setState({ coaches: rep}) 
+       
+      this.nbCoaches();
+    }.bind(this)
+    ).catch(function (error){
+     console.log(error);
+    })
+   
+   
+    }
+   
+    clearFilter(){
+     
+      this.setState({gender:"", rate: 5 , type: "", filter: false, key:"", 
+      checkedRate: [false, false, false, false, false],
+      checkedGender: [false, false],
+      checkedType: [false, false],},async ()  =>{
+        this.nbCoaches();
+        this.findCoaches(0,0);
+      });
+    
+     var x = document.getElementsByClassName('form-check-input');
+
+    var n = x.length;
+    for (var i =0; i<n;i++){
+      x[i].checked=false
+    }
+    
+      //console.log()
+    }
+
+  
   
   /***************************** */
   async nbCoaches(){
-    const response1 = await fetch("catalog/coachesNb?rate=" +
+    const response1 =  axios.get("catalog/coachesNb?rate=" +
     this.state.rate +
     "&gender="+
     this.state.gender +
@@ -175,26 +201,28 @@ export default class Catalog extends Component {
     this.state.type+
     "&key="+
     this.state.key  
-);
-    const body= await response1.json();
-    this.setState({ nbCoach: body })
+).then(function (response) {
+  
+  
+  this.setState({ nbCoach: response.data}) 
+  
+}.bind(this)
+).catch(function (error){
+console.log(error);
+})
+ 
   }
 
 
   async componentDidMount() {
     this.findCoaches(this.state.currentPage,0);
-    this.setState({gender:"", rate: 5 , type: "", filter: false, key:""},async ()  =>{
+    this.setState({gender:"", rate: 5 , type: "", filter: false, key:"",  },async ()  =>{
       this.nbCoaches();
     });
 
-    const user = JSON.parse(localStorage.getItem("user"));
-    if(!user){
-      this.setState({authenticated: false})
-    }else{
-      this.setState({authenticated: true})
-    }
-    console.log(this.state)
-    
+  }
+  componentDidUpdate(){
+    console.log(this.state.CurrentPage);
   }
 
   render() {
@@ -206,17 +234,24 @@ export default class Catalog extends Component {
     let x = this.state.checkedRate;
     return (
       <div className="" style={{}}>
-      <CatalogNav />
-      <div style={{ height: "120px" }}></div>
+        <CatalogNav />
+        <div style={{ height: "120px" }}></div>
         <Jumb updatekey={this.updatekey}/>
 
         <div>
           <Container>
             <Row>
+
               <Col xs="3" style={{ marginTop: "57px" }}>
                 <h6>
                   {" "}
-                  <FontAwesome className="fa-sliders"> </FontAwesome> Filter
+                  <Container>
+                    <Row>
+                      <Col xs="10" className="text-left"> <FontAwesome className="fa-sliders"> </FontAwesome> Filter</Col>
+                      <Col xs="2"><FontAwesome className="far fa-times-circle" name="clear" onClick={this.clearFilter.bind(this)}> </FontAwesome></Col>
+                    </Row>
+                  </Container>
+                 
                 </h6>
                 <hr></hr>
                 <form onSubmit={this.onClickButton.bind(this)}>
@@ -248,8 +283,9 @@ export default class Catalog extends Component {
 
                   <hr></hr>
                   <div style={{ margin: "10px" }}>Gender</div>
-
+   
                   <div className="form-check-radio">
+            
                     <Label check>
                       <Input   defaultValue="option1"
                      
@@ -269,11 +305,13 @@ export default class Catalog extends Component {
                   <hr></hr>
 
                   <div style={{ margin: "10px" }}>Specialty </div>
+       
+    
                   <div className="form-check-radio">
                     <Label check>
                       <Input
                         defaultValue="option2"
-                        id="exampleRadios2"
+                      
                         name="exampleRadios"
                         type="radio"
                         onClick={()=>this.onClickRadio(1)}
@@ -285,7 +323,7 @@ export default class Catalog extends Component {
                     <Label check>
                       <Input
                         defaultValue="option2"
-                        id="exampleRadios2"
+                       
                         name="exampleRadios"
                         type="radio"
                         onClick={()=>this.onClickRadio(2)}
@@ -336,18 +374,7 @@ export default class Catalog extends Component {
                             Worst Rated
                           </span>
                         </DropdownItem>
-                        {/*<DropdownItem
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          Newest
-                        </DropdownItem>
-                        <DropdownItem
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
-                        >
-                          Older
-                        </DropdownItem>*/}
+                     
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </Col>

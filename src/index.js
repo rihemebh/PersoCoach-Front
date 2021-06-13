@@ -20,6 +20,7 @@ import Login from "Authentification/Login";
 import SignUp from "Authentification/SignUp";
 import App from "App";
 import Profile from "Clients/Profile";
+import ClientRequests from "Clients/ClientRequests"
 
 // others
 
@@ -64,6 +65,10 @@ ReactDOM.render(
         path="/client-profile"
         render={(props) => <Profile {...props} />}
       />
+      <Route
+      path="/client-requests"
+      render={(props) => <ClientRequests {...props} />}
+    />
       <Redirect to="/signup" />
     </Switch>
   </BrowserRouter>,
