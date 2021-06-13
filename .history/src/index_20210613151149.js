@@ -77,6 +77,7 @@ ReactDOM.render(
         path="/client-profile"
         render={(props) => <Profile {...props} />}
       />
+<<<<<<< HEAD
 
         <Route
         path="/coach-profile/:id"
@@ -92,10 +93,12 @@ ReactDOM.render(
         path="/program"
         render={(props) => <ProgramForm {...props} />}
       />
+=======
       <Route
       path="/client-requests"
       render={(props) => <ClientRequests {...props} />}
     />
+>>>>>>> 3192bb7a74814d5bfcc419b43595e06f95b47d32
       <Redirect to="/signup" />
 
     </Switch>

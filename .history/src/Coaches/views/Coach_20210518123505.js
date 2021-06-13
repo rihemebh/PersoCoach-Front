@@ -18,9 +18,9 @@ import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import FontAwesome from "react-fontawesome";
 import ProfileNav from "components/Navbars/ProfileNav";
-import CoachModal from "./CoachModal";
+import CoachModal from "../Coaches/CoachModal";
 import { Link } from "react-router-dom";
-import ReviewModal from "./ReviewModal";
+import ReviewModal from "../Coaches/ReviewModal";
 
 class Coach extends Component {
   emptyCoach = {
@@ -39,6 +39,7 @@ class Coach extends Component {
     super(props);
 
     this.state = {
+      user: JSON.parse(localStorage.getItem("user")), 
       reviews :[],
       id: props.match.params.id,
       activeTab: 1,
@@ -49,6 +50,7 @@ class Coach extends Component {
   }
 
   async componentDidMount() {
+    console.log(this.state.id)
    
     const response = await fetch(
       "http://localhost:3000/catalog/coach/" + this.state.id
@@ -61,7 +63,9 @@ class Coach extends Component {
       "http://localhost:3000/catalog/coach/" + this.state.id+"/review"
     );
     const body1 = await response1.json();
-    this.setState({ reviews: body1 });
+    this.setState({ reviews: body1 },()=>{
+      console.log(this.state.reviews)
+    });
   }
 
   render() {
@@ -72,22 +76,18 @@ class Coach extends Component {
       }
     };
     var n=0;
-    let nb=0;
-    const length = this.state.reviews.length;
-    console.log(length);
-    var TotalReviews =0;
-    length === 0? TotalReviews=[]:
-    TotalReviews = this.state.reviews.map((value)=>{
-  
-        return value.rate;
-    });
-
-    TotalReviews.forEach(element => {
-      nb=nb+element;
-    });
-    length == 0? nb=0:nb=nb/length;
-   
     const rate = [];
+
+    let nb = 0;
+    const length = this.state.reviews.length;
+ 
+    //var TotalReviews = [];
+    let x= this.state.reviews[0];
+    
+    length == 0 && this.state.reviews != undefined
+      ? (nb=0)
+      : ( nb = x.coach.rate);
+      console.log(nb);
     for (let i = 0; i < 5; i++) {
       if (nb > 0) {
         rate.push(
@@ -133,8 +133,8 @@ class Coach extends Component {
               <Col className="ml-auto mr-auto text-center">
                 <p>{this.state.coach.description}</p>
                 <br />
-
-                <CoachModal id={this.state.id}/>
+                {this.state.user == null ?<CoachModal disabled="true" id={this.state.id}/> :<CoachModal disabled="false" id={this.state.id}/>}
+                
               </Col>
             </Row>
 
@@ -176,11 +176,11 @@ class Coach extends Component {
                           <li>
                             <Row>
                             <Col lg="3" md="6" xs="6">
-                                <h5>Experience{index+1}</h5>
-                                <hr />
+                                <h5>{exp.name}</h5>
+                             
                               </Col>
                               <Col lg="9" md="6" xs="6">
-                                {exp}
+                                {exp.description}
                                 <hr />
                               </Col>
                             
@@ -201,11 +201,11 @@ class Coach extends Component {
                           <li>
                             <Row>
                             <Col lg="3" md="6" xs="6">
-                                <h5>Experience{index+1}</h5>
-                                <hr />
+                                <h5>{exp.name}</h5>
+                             
                               </Col>
                               <Col lg="9" md="6" xs="6">
-                                {exp}
+                                {exp.description}
                                 <hr />
                               </Col>
                              

@@ -22,7 +22,9 @@ import ProfileNav from "components/Navbars/ProfileNav.js";
 import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
 import DemoFooter from "components/Footers/DemoFooter.js";
 import AuthService from "Authentification/AuthService";
-
+import ProfileSettingsModal from "./ProfileSettingsModal";
+import authHeader from "Authentification/AuthHeader";
+import ClientRequests from "./ClientRequests"
 
 
 
@@ -32,7 +34,7 @@ export default class Profile extends React.Component{
       id: '',
       username: '',
       email: '',
-      name: '',
+      name: "",
       description: '',
       age: '',
       gender: '',
@@ -47,17 +49,10 @@ export default class Profile extends React.Component{
     constructor(props){
       super(props)
       this.state={
-          authenticated: false,
+          authenticated: props? this.props.authenticated: false,
           loading: true,
           activeTab: 1,
-          currentUserInfo: this.initialInfos,
-          currentUserProgramRequests: [{
-            "coach_id":  '',
-            "coach_name":  '',
-            "coach_url": '',
-            "state": "pending"
-          }]
-
+          currentUserInfo: this.initialInfos
       }
     }
 
@@ -65,29 +60,20 @@ export default class Profile extends React.Component{
       AuthService.getCurrentUser()
       .then(
         response => {
-          console.log(response)
+          console.log(response.roles[0])
+          if(response.roles[0].name==="ROLE_COACH"){
+            console.log("redirecting..")
+                      this.props.history.push({
+                       pathname: '/coach-profile'+response.id});
+                      window.location.reload(); 
+          }
           this.setState( () => (
             {
-              currentUserInfo: {
-                "name": response.name,
-                "username": response.username,
-                "email": response.email,
-                "description": response.description,
-                "url": response.url,
-                "roles": response.roles
-              }/* ,
-              currentUserProgramRequests: [...this.state.currentUserProgramRequests, {
-                "coach_id":  response.programRequestList.coach.id,
-                "coach_name":  response.programRequestList.coach.name,
-                "coach_url": response.programRequestList.coach.url,
-                "state": "pending"              
-              }] */,
-              coach: response.programRequestList.coach,
+              currentUserInfo: response,
               authenticated: true,
               loading: false
             })) 
           console.log(this.state)
- 
         }
       )
       .catch(
@@ -99,13 +85,10 @@ export default class Profile extends React.Component{
     }
 
     render(){
-      
-      console.log(this.state)
-      //console.log(this.state.currentUser.programRequestList)
-
+      const user = this.state.currentUserInfo;
+      console.log(user);  
       if(!this.state.loading && !this.state.authenticated)
         this.props.history.push({pathname: '/login'});  
-      console.log(this.state)
 
       const toggle = (tab) => {
         if (this.state.activeTab !== tab) {
@@ -140,15 +123,15 @@ export default class Profile extends React.Component{
                   <Col className="ml-auto mr-auto text-center" md="6">
                     <p>{this.state.currentUserInfo.description}</p>
                     <br />
-                    <Button className="btn-round" color="default" outline>
-                      <i className="fa fa-cog" /> Settings
-                    </Button>
+                    
+                    <ProfileSettingsModal currentUserInfo={user}/>
                   </Col>
                 </Row>
-                <br />
+                <br />  
                 <div className="nav-tabs-navigation">
                 <h6>Get a closer look at your program requests sent to Coaches : </h6>
                 <br></br>
+                
                   <div className="nav-tabs-wrapper">
                     <Nav role="tablist" tabs>
                       <NavItem>
@@ -168,7 +151,7 @@ export default class Profile extends React.Component{
                             toggle("2");
                           }} 
                         >
-                          <h6>Returned Requests</h6>
+                          <h6>Accepted Requests</h6>
                         </NavLink>
                       </NavItem>
                     </Nav>
@@ -183,9 +166,11 @@ export default class Profile extends React.Component{
                     <ul className="list-unstyled follows">
 
                       { this.state.currentUserProgramRequests ?
+                        
                           this.state.currentUserProgramRequests.map((exp,index) => {
                           return (
-                            <li>
+                            <ClientRequests></ClientRequests>
+                            /*<li>
                               <Row>
                               <Col lg="3" md="6" xs="6">
                                   <h5>Experience{index+1}</h5>
@@ -197,11 +182,11 @@ export default class Profile extends React.Component{
                                 </Col>
                               
                               </Row>
-                            </li>
+                            </li>*/
                           ); 
                         }): 
                         <div>
-                        <h6>You haven't subscribed or requested ay program yet ! </h6>
+                        <h6>You haven't subscribed or requested any program yet ! </h6>
                         <br></br>
                         <Button
                           className="btn-round"
@@ -225,7 +210,8 @@ export default class Profile extends React.Component{
                       { this.state.currentUserProgramRequests ?
                           this.state.currentUserProgramRequests.map((exp,index) => {
                           return (
-                            <li>
+                            <ClientRequests></ClientRequests>
+                            /*<li>
                               <Row>
                               <Col lg="3" md="6" xs="6">
                                   <h5>Experience{index+1}</h5>
@@ -237,11 +223,11 @@ export default class Profile extends React.Component{
                                 </Col>
                               
                               </Row>
-                            </li>
+                            </li>*/
                           ); 
                         }): 
                         <div>
-                        <h6>You haven't subscribed or requested ay program yet ! </h6>
+                        <h6>You haven't subscribed or requested any program yet ! </h6>
                         <br></br>
                         <Button
                           className="btn-round"

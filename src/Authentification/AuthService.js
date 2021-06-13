@@ -1,4 +1,5 @@
 import axios from "axios";
+import authHeader from "./AuthHeader";
 
 const API_URL_AUTH = "http://localhost:8080/api/auth/";
 const API_URL_USER = "http://localhost:8080/api/user/";
@@ -36,9 +37,7 @@ class AuthService {
             return null;
         }
         const response = await axios.get(API_URL_USER + "id/" + currentUser.id, {
-            headers: {
-                'Authorization': 'Bearer ' + currentUser.accessToken
-             }
+            headers: authHeader()
             });
         return response.data;
     }
@@ -46,6 +45,11 @@ class AuthService {
      getCurrentUser2(){
         const currentUser =  JSON.parse(localStorage.getItem("user"));
         return currentUser.data;
+    }
+
+    getCurrentRole(){
+        const currentUser =  this.getCurrentUser();
+        return currentUser.roles[0];
     }
 }
 
