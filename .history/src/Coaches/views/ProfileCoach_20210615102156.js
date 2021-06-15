@@ -1,0 +1,325 @@
+import React, { Component } from "react";
+
+// reactstrap components
+import {
+  NavItem,
+  NavLink,
+  Nav,
+  TabContent,
+  TabPane,
+  Container,
+  Row,
+  Col,
+  Button,
+  Table
+} from "reactstrap";
+
+// core components
+
+import ProfilePageHeader from "components/Headers/ProfilePageHeader.js";
+import DemoFooter from "components/Footers/DemoFooter.js";
+import FontAwesome from "react-fontawesome";
+import ProfileNav from "components/Navbars/ProfileNav";
+import CoachModal from "../Components/CoachModal";
+import { Link } from "react-router-dom";
+import ReviewModal from "../Components/ReviewModal";
+import Requests from "Coaches/Components/Requests";
+import Edit from "Coaches/Components/Edit"
+import Programs from "Coaches/Components/Programs";
+
+class ProfileCoach extends Component {
+  emptyCoach = {
+    id: 0,
+    name: "",
+    gender: "",
+    type: "",
+    url:"",
+    description: "",
+    rate: 0,
+    email:"",
+    acadamicExp: [],
+    workExp: [],
+  
+  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      reviews :[],
+      requests : [],
+      id: props.match.params.id,
+      activeTab: 1,
+      coachId: props.match.params.id,
+      coach: this.emptyCoach,
+      isLoading: true,
+      req : 0, 
+      edit: false,
+      prog: false,
+    };
+
+    this.reqHandleFalse = this.reqHandleFalse.bind(this);
+    this.reqHandleTrue = this.reqHandleTrue.bind(this);
+    this.handelEdit= this.handelEdit.bind(this);
+    this.handleProg = this.handleProg.bind(this);
+  this. handelEditF = this.handelEditF.bind(this);
+    this.handleProgFalse = this.handleProgFalse.bind(this);
+  }
+handleProg(){
+
+  this.setState({prog: true});
+}
+
+handleProgFalse(){
+  this.setState({prog: false});
+
+}
+  async componentDidMount() {
+
+    const response = await fetch(
+      "http://localhost:3000/catalog/coach/" + this.state.id +"/review"
+    );
+
+    const body = await response.json();
+    console.log(body)
+    this.setState({ reviews: body },()=>{
+      console.log(this.state.reviews)
+    });
+
+    const response1 = await fetch(
+      "http://localhost:3000/catalog/coach/" + this.state.id
+    );
+    const body1 = await response1.json();
+    this.setState({ coach: body1 },()=>{
+    
+    });
+    
+    const response2 = await fetch(
+      "http://localhost:3000/catalog/coach/" + this.state.id+"/requests"
+    );
+    const body2 = await response2.json();
+    this.setState({ requests: body2 },()=>{
+    
+    });
+  }
+ handelEdit(){
+  
+  this.setState({edit : true});
+ }
+ handelEditF(){
+  this.setState({edit : false});
+ }
+  reqHandleTrue(){
+   
+    this.setState({req : true});
+  }
+  reqHandleFalse(){
+   
+    this.setState({req : false});
+  }
+
+  render() {
+    document.documentElement.classList.remove("nav-open");
+    const toggle = (tab) => {
+      if (this.state.activeTab !== tab) {
+        this.setState({ activeTab: tab });
+      }
+    };
+    var n=0;
+    const rate = [];
+
+    let nb = 0;
+    const length = this.state.reviews.length;
+ 
+    //var TotalReviews = [];
+    let x= this.state.reviews[0];
+    
+    length == 0 && this.state.reviews != undefined
+      ? (nb=0)
+      : ( nb = x.coach.rate);
+     
+    for (let i = 0; i < 5; i++) {
+      if (nb > 0) {
+        rate.push(
+          <FontAwesome
+            className="fas fa-star text-warning"
+            name="star"
+          ></FontAwesome>
+        );
+        nb--;
+      } else {
+        rate.push(
+          <FontAwesome
+            className="far fa-star "
+            name="star"
+            style={{ color: "#d9d9d9" }}
+          ></FontAwesome>
+        );
+      }
+    }
+    return (
+      <>
+        <ProfileNav />
+        <ProfilePageHeader />
+        <div className="section profile-content">
+  
+              <div className="owner">
+              <div className="avatar">
+                <img
+                  alt="..."
+                  className="img-circle img-no-padding img-responsive"
+                  src={this.state.coach.url} style={{width:"300px",height:"130px"}}
+                />
+              
+              </div>
+              </div>
+          <Container>
+            {this.state.prog == true ? <Programs coach={this.state.coach} profile={this.handleProgFalse} />:
+     
+              this.state.edit ?  
+              <Edit profile={this.handelEditF} coach={this.state.coach} ></Edit>  : 
+              <>
+             
+           
+            {this.state.req == false ? 
+            <>
+           
+            <div className="name  ">
+                <h4 className="">
+                
+               {this.state.coach.name}
+               <br />
+              
+                </h4>
+                <h7>{this.state.coach.email}</h7>
+                <br />
+              
+                <h6 className="description">{this.state.coach.type} Coach</h6>
+             
+                <ReviewModal reviews={this.state.reviews} rate={rate} />
+              </div>
+              <br></br>
+              <Row>
+              <Col className="ml-auto mr-auto text-center">
+              <p>   <FontAwesome className="fa-quote-left " style={{fontSize: "10px", verticalAlign:"top"}}></FontAwesome>
+              {this.state.coach.description}
+                      <FontAwesome className="fa-quote-right"  style={{fontSize: "10px", verticalAlign:"top"}}></FontAwesome>
+                      </p>
+               
+                <br />
+
+             
+              </Col>
+            </Row>
+                  <Row>
+                 
+                  <Col className="ml-auto mr-auto text-center" style={{padding :  "10px"}}>  <Button  className="btn-round  " outline 
+                    color="default"  style={{fontSize: "10px", margin: "5px"}} onClick={()=> this.handelEdit(true)}>
+                 <FontAwesome  className="far fa-edit " ></FontAwesome><span >Edit Profil</span></Button>
+                 
+                <Button  className="btn-round "  color="default" outline  style={{fontSize: "10px" , margin: "5px"}}
+                 onClick={this.reqHandleTrue
+                }>
+                 <FontAwesome  className="fas fa-users"  ></FontAwesome>Requests</Button>
+                 <Button  className="btn-round "  color="default" outline  onClick={this.handleProg} style={{fontSize: "10px" , margin: "5px"}}>
+                 
+                 <FontAwesome  className="fas fa-align-justify"  ></FontAwesome>Programs</Button></Col>
+               
+                  </Row>
+               
+       
+
+            <br />
+            <div className="nav-tabs-navigation">
+              <div className="nav-tabs-wrapper">
+         <Nav role="tablist" tabs>
+                  <NavItem>
+                    <NavLink
+                      className={this.state.activeTab === "1" ? "active" : ""}
+                      onClick={() => {
+                        toggle("1");
+                      }}
+                    >
+                      Acadamic Experience
+                    </NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink
+                      className={this.state.activeTab === "2" ? "active" : ""}
+                      onClick={() => {
+                        toggle("2");
+                      }}
+                    >
+                      Professional Experience
+                    </NavLink>
+                  </NavItem>
+                </Nav>
+              </div>
+            </div>
+            {/* Tab panes */}
+            <TabContent className="following" activeTab={this.state.activeTab}>
+              <TabPane tabId="1" id="follows">
+                <Row>
+                  <Col className="ml-auto mr-auto" md="6">
+                    <ul className="list-unstyled follows">
+                      {this.state.coach.acadamicExp.length==0?<h6 className= "text-center">No Experience for now</h6> 
+                      :this.state.coach.acadamicExp.map((exp,index) => {
+                        return (
+                          <li>
+                            <Row>
+                            <Col lg="3" md="6" xs="6">
+                                <h5>{exp.name}</h5>
+                             
+                              </Col>
+                              <Col lg="9" md="6" xs="6">
+                                {exp.description}
+                                <hr />
+                              </Col>
+                             
+                            </Row>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </Col>
+                </Row>
+              </TabPane>
+              <TabPane className="text-center" tabId="2" id="following">
+              <Row>
+                  <Col className="ml-auto mr-auto" md="6">
+                    <ul className="list-unstyled follows">
+                      {this.state.coach.workExp.length==0?<h6 className= "text-center">No Experience for now</h6> :this.state.coach.workExp.map((exp,index) => {
+                        return (
+                          <li>
+                            <Row>
+                            <Col lg="3" md="6" xs="6">
+                                <h5>{exp.name}</h5>
+                             
+                              </Col>
+                              <Col lg="9" md="6" xs="6">
+                                {exp.description}
+                                <hr />
+                              </Col>
+                             
+                            </Row>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </Col>
+                </Row>
+              </TabPane>
+            </TabContent>        
+            </>
+            : <Requests req={this.reqHandleFalse} coach={this.state.coach} requests={this.state.requests} id={this.state.coach.id} profile={this.reqHandleFalse}/>      } </>}
+             
+          </Container> 
+             
+        </div>
+        </div>
+       
+        <DemoFooter />
+      </>
+    );
+  }
+}
+export default ProfileCoach;
