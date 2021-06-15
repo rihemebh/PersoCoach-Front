@@ -129,8 +129,8 @@ class DayForm extends Component {
         var button = document.getElementById(this.state.id);
         button.disabled = true;
         console.log(response);
-      }.bind(this))
-      .catch(function (error) {
+      },
+      function (error) {
         // handle error
       }
     );
@@ -207,7 +207,7 @@ class DayForm extends Component {
                <h6 className="text-white">
                    Breakfast<span className='text-danger'>*</span> 
              
-               <AvField  name="breakfast" className="" type="textarea" label="" required   style={{marginTop: "3px", marginRight: "20px"}} />
+               <AvField  name="breakfast" className="" type="textarea" label=""   style={{marginTop: "3px", marginRight: "20px"}} />
                   
                       </h6>
 

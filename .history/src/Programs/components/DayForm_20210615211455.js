@@ -129,8 +129,8 @@ class DayForm extends Component {
         var button = document.getElementById(this.state.id);
         button.disabled = true;
         console.log(response);
-      }.bind(this))
-      .catch(function (error) {
+      },
+      function (error) {
         // handle error
       }
     );
@@ -198,7 +198,7 @@ class DayForm extends Component {
           onValidSubmit={this.handleValidSubmit}
           onInvalidSubmit={this.handleInvalidSubmit}
         >
-           <h6 className="text-white"  >
+          {/**  <h6 className="text-white"  >
                     Complexity <span className='text-danger'>*</span> 
                       <AvField  name="comp" type="number" label="" required />
                       </h6>
@@ -206,8 +206,9 @@ class DayForm extends Component {
                <div className="form-inline ">    
                <h6 className="text-white">
                    Breakfast<span className='text-danger'>*</span> 
-             
-               <AvField  name="breakfast" className="" type="textarea" label="" required   style={{marginTop: "3px", marginRight: "20px"}} />
+               <AvField  name="breakfast"className="" type="textarea" label="" required style={{marginTop: "3px", marginRight: "20px"}}/>
+              {/** <AvField  name="breakfast"className="" type="" label="" required style={{marginTop: "3px", marginRight: "20px"}}/>
+               <AvField  name="breakfast"className="" type="" label=""   style={{marginTop: "3px", marginRight: "20px"}} />
                   
                       </h6>
 
@@ -219,8 +220,8 @@ class DayForm extends Component {
                       <h6 className="text-white"  >
                     Dinner <span className='text-danger'>*</span> 
                       <AvField  name="dinner" className=""  type="textarea" label="" required style={{marginTop: "3px", marginRight: "20px"}} />
-                      </h6>
-         { this.state.extra==true ?
+                      </h6>*/}
+          {/*this.state.extra==true ?
                      <h6 className="text-white" style={{marginTop: "10px"}}  >
                         Extra <span className='text-danger'>*</span> 
                       <AvField  name="extra" className=""  type="textarea" label="" required style={{marginTop: "10px", marginRight: "20px"}} />
@@ -276,7 +277,7 @@ class DayForm extends Component {
                       </h6>
                     }
                    <div class="form-inline">
-                   <h6 className="text-white">
+                 {/*  <h6 className="text-white">
                     Restrictions <span className='text-danger'>*</span>
                       <AvField
                         name="restrictions"
@@ -287,9 +288,9 @@ class DayForm extends Component {
                         style={{marginTop: "5px", marginBottom: "10px"}}
                       />
                     </h6>
-                    <Button className="btn-round"  style={{marginTop: "10px",marginLeft: "10px"}} > 
-                      <FontAwesome className="fas fa-plus"></FontAwesome> </Button>    
-                   </div>
+                    { <Button className="btn-round"  style={{marginTop: "10px",marginLeft: "10px"}} > 
+                      <FontAwesome className="fas fa-plus"></FontAwesome> </Button>    }  
+                   </div>*/}
           <h6 className="text-white">
             <span style={{ marginBottom: "50px" }}>
               Activity<span className="text-danger">*</span> <br></br>

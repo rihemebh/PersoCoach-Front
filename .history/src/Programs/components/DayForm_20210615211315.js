@@ -104,20 +104,23 @@ class DayForm extends Component {
     const f = new FormData();
     // console.log(this.state.video)
     f.append("video", this.state.video, "Day" + this.state.nb + ".mp4");
-    f.append("day", this.state.nb % 7);
-    f.append("week", this.state.nb < 7 ? 1 : this.state.nb / 7);
-    f.append("complexity", values.comp);
-    f.append("breakfast", values.breakfast);
-    f.append("lunch", values.lunch);
-    f.append("dinner", values.dinner);
-    f.append("extra", this.state.extra ? values.extra : "");
-    f.append("qte", this.state.other === true ? values.other : values.water);
-    f.append("restriction", values.restrictions);
-    f.append("desc", values.desc);
+    f.append("day",this.state.nb % 7)
+    f.append("week",this.state.nb < 7 ? 1 : this.state.nb / 7)
+    f.append("complexity",values.comp)
+    f.append("breakfast",values.breakfast)
+    f.append("lunch", values.lunch)
+    f.append("dinner", values.dinner)
+    f.append("ex")
 
     axios({
       method: "put",
-      url: "http://localhost:8080/api/program/" + this.props.id + "/day",
+      url:
+        "http://localhost:8080/api/program/" +
+          this.props.id +
+          "/day" 
+ 
+          
+          ,
 
       data: f,
       headers: { "Content-Type": "multipart/form-data" },
@@ -129,8 +132,8 @@ class DayForm extends Component {
         var button = document.getElementById(this.state.id);
         button.disabled = true;
         console.log(response);
-      }.bind(this))
-      .catch(function (error) {
+      },
+      function (error) {
         // handle error
       }
     );
@@ -198,7 +201,7 @@ class DayForm extends Component {
           onValidSubmit={this.handleValidSubmit}
           onInvalidSubmit={this.handleInvalidSubmit}
         >
-           <h6 className="text-white"  >
+          {/**  <h6 className="text-white"  >
                     Complexity <span className='text-danger'>*</span> 
                       <AvField  name="comp" type="number" label="" required />
                       </h6>
@@ -206,8 +209,9 @@ class DayForm extends Component {
                <div className="form-inline ">    
                <h6 className="text-white">
                    Breakfast<span className='text-danger'>*</span> 
-             
-               <AvField  name="breakfast" className="" type="textarea" label="" required   style={{marginTop: "3px", marginRight: "20px"}} />
+               <AvField  name="breakfast"className="" type="textarea" label="" required style={{marginTop: "3px", marginRight: "20px"}}/>
+              {/** <AvField  name="breakfast"className="" type="" label="" required style={{marginTop: "3px", marginRight: "20px"}}/>
+               <AvField  name="breakfast"className="" type="" label=""   style={{marginTop: "3px", marginRight: "20px"}} />
                   
                       </h6>
 
@@ -219,8 +223,8 @@ class DayForm extends Component {
                       <h6 className="text-white"  >
                     Dinner <span className='text-danger'>*</span> 
                       <AvField  name="dinner" className=""  type="textarea" label="" required style={{marginTop: "3px", marginRight: "20px"}} />
-                      </h6>
-         { this.state.extra==true ?
+                      </h6>*/}
+          {/*this.state.extra==true ?
                      <h6 className="text-white" style={{marginTop: "10px"}}  >
                         Extra <span className='text-danger'>*</span> 
                       <AvField  name="extra" className=""  type="textarea" label="" required style={{marginTop: "10px", marginRight: "20px"}} />
@@ -276,7 +280,7 @@ class DayForm extends Component {
                       </h6>
                     }
                    <div class="form-inline">
-                   <h6 className="text-white">
+                 {/*  <h6 className="text-white">
                     Restrictions <span className='text-danger'>*</span>
                       <AvField
                         name="restrictions"
@@ -287,9 +291,9 @@ class DayForm extends Component {
                         style={{marginTop: "5px", marginBottom: "10px"}}
                       />
                     </h6>
-                    <Button className="btn-round"  style={{marginTop: "10px",marginLeft: "10px"}} > 
-                      <FontAwesome className="fas fa-plus"></FontAwesome> </Button>    
-                   </div>
+                    { <Button className="btn-round"  style={{marginTop: "10px",marginLeft: "10px"}} > 
+                      <FontAwesome className="fas fa-plus"></FontAwesome> </Button>    }  
+                   </div>*/}
           <h6 className="text-white">
             <span style={{ marginBottom: "50px" }}>
               Activity<span className="text-danger">*</span> <br></br>

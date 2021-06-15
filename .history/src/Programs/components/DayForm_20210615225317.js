@@ -129,8 +129,8 @@ class DayForm extends Component {
         var button = document.getElementById(this.state.id);
         button.disabled = true;
         console.log(response);
-      }.bind(this))
-      .catch(function (error) {
+      }.bind(this)),
+      function (error) {
         // handle error
       }
     );

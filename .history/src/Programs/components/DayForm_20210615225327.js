@@ -130,7 +130,7 @@ class DayForm extends Component {
         button.disabled = true;
         console.log(response);
       }.bind(this))
-      .catch(function (error) {
+      .function (error) {
         // handle error
       }
     );
