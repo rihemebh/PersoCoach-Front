@@ -13,7 +13,7 @@ import {
   Col, 
   } from "reactstrap";
 
-import ProfileNav from "components/Navbars/ProfileNav";
+import AuthNav from "components/Navbars/AuthNav";
 import AuthService from "./AuthService";
 
 export class Login extends Component{
@@ -91,14 +91,19 @@ export class Login extends Component{
     } 
     
     componentDidUpdate(){
-      console.log(this.state.nbForm);
+
       document.body.classList.add("register-page");
     }
 
+
     render(){
+      const user = JSON.parse(localStorage.getItem("user"));
+      if(user){
+        this.props.history.push({pathname: '/index'});  
+      }
         return(
             <>
-            <ProfileNav />
+            <AuthNav />
       <div
         className="page-header"
         style={{
@@ -123,7 +128,7 @@ export class Login extends Component{
             
 
 
-                { this.state.errMsg != undefined ? (
+                { this.state.errMsg ? (
                     <Alert color="danger">
                   {this.state.errMsg}
                   </Alert>
