@@ -1,0 +1,122 @@
+import React, { Component } from 'react'
+import ProfileNav from "components/Navbars/ProfileNav";
+import { 
+  Alert,
+  Button, 
+  Card, 
+  Form, 
+  Input, 
+  Container, 
+  Row, 
+  Col, 
+  NavLink} from "reactstrap";
+  import AuthNav from "components/Navbars/AuthNav";
+import { Link } from "react-router-dom";
+import Carousel from "react-multi-carousel";
+import "C:/Users/rihem/Desktop/PersoCoach1/PersoCoach-Front/node_modules/react-multi-carousel/lib/styles.css";
+
+
+export default class Track extends Component {
+  
+  componentDidMount(){
+    document.documentElement.classList.remove("nav-open");
+    document.body.classList.add("register-page");
+ }
+ componentWillUnmount(){
+    document.body.classList.remove("register-page");
+ } 
+componentDidUpdate(){
+    console.log(this.state.nbForm);
+    document.body.classList.add("register-page");
+}
+
+    render() {
+      const CustomRightArrow = ({ onClick, ...rest }) => {
+        const {
+          onMove,
+          carouselState: { currentSlide, deviceType }
+        } = rest;
+        // onMove means if dragging or swiping in progress.
+        return <button onClick={() => onClick()} />;
+      };
+      const responsive = {
+        superLargeDesktop: {
+          // the naming can be any, depends on you.
+          breakpoint: { max: 4000, min: 3000 },
+          items: 5
+        },
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 3
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1
+        }
+      };
+        return (
+            <>
+                  <ProfileNav />
+      <div
+        className="page-header"
+        style={{
+            //opacity: 0.8,
+         // backgroundColor: "rgba(0, 0, 0, 0.9)",
+          backgroundImage:
+            "url(https://www.heart.org/-/media/healthy-living-images/fitness/runner_tying_shoe.jpg)",
+        }}
+      >
+        
+        <div className="filter" />
+        <Container>
+          <Row>
+         
+               <Carousel 
+               customRightArrow={<CustomRightArrow />}
+                 swipeable={false}
+                 draggable={false}
+                 showDots={true}
+                 responsive={responsive}
+                 ssr={true} // means to render carousel on server-side.
+                 infinite={true}
+                 autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                 autoPlaySpeed={1000}
+                 keyBoardControl={true}
+                 customTransition="all .5"
+                 transitionDuration={500}
+                 containerClass="carousel-container"
+                 removeArrowOnDeviceType={["tablet", "mobile"]}
+                 deviceType={this.props.deviceType}
+                 dotListClass="custom-dot-list-style"
+                 itemClass="carousel-item-padding-40-px"
+               
+               responsive={responsive}>
+  <div>Item 1</div>
+  <div>Item 2</div>
+  <div>Item 3</div>
+  <div>Item 4</div>
+</Carousel>
+    
+
+             
+         
+          </Row>
+        </Container>
+        <div className="footer register-footer text-center">
+          <h6>
+            © {new Date().getFullYear()}, made with{" "}
+            <i className="fa fa-heart heart" /> by PersoCoach Team          </h6>
+        </div>
+        
+        
+        </div> 
+
+
+            </>
+        )
+    }
+}

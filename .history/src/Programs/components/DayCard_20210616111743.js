@@ -1,0 +1,19 @@
+import React, { Component } from 'react'
+
+export default class DayCard extends Component {
+    render() {
+        return (
+            <div>
+               <Card>
+        <CardHeader>Header</CardHeader>
+        <CardBody>
+          <CardTitle tag="h5">Special Title Treatment</CardTitle>
+          <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+          <Button>Go somewhere</Button>
+        </CardBody>
+        <CardFooter>Footer</CardFooter>
+      </Card> 
+            </div>
+        )
+    }
+}
