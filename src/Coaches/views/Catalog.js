@@ -33,7 +33,7 @@ export default class Catalog extends Component {
       checkedGender: [false, false],
       checkedType: [false, false],
       coaches: [],
-      rate: 5,
+      rate: 0,
       CoachesPerPage: 9,
       CurrentPage: 1,
       nbCoach: 0,
@@ -174,7 +174,7 @@ export default class Catalog extends Component {
    
     clearFilter(){
      
-      this.setState({gender:"", rate: 5 , type: "", filter: false, key:"", 
+      this.setState({gender:"", rate: 0 , type: "", filter: false, key:"", 
       checkedRate: [false, false, false, false, false],
       checkedGender: [false, false],
       checkedType: [false, false],},async ()  =>{
@@ -221,7 +221,7 @@ console.log(error);
 
 
     this.findCoaches(this.state.currentPage,0);
-    this.setState({gender:"", rate: 5 , type: "", filter: false, key:"",  },async ()  =>{
+    this.setState({gender:"", rate: 0 , type: "", filter: false, key:"",  },async ()  =>{
       this.nbCoaches();
     });
 
@@ -285,7 +285,7 @@ console.log(error);
                 <hr></hr>
                 <form onSubmit={this.onClickButton.bind(this)}>
                   <div style={{ margin: "10px" }}>
-                    <b>Max Rate</b>
+                    <b>Min Rate</b>
                   </div>
                   {x.map((value, index) => {
                     return (

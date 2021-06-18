@@ -44,6 +44,8 @@ export default class AdminPanel extends Component {
       editCoach: false,
       toedit: null,
       key: "",
+      role: null, 
+      id: 0,
     };
 
     this.handleSearchCoaches = this.handleSearchCoaches.bind(this);
@@ -88,6 +90,25 @@ export default class AdminPanel extends Component {
     });
   }
   componentDidMount() {
+    AuthService.getCurrentUser()
+    .then(
+      response => {
+       if(response.roles[0].name !== "ROLE_ADMIN"){
+        this.props.history.push({
+          pathname: "/index",
+        });
+       }
+       
+         
+      
+      }
+    
+    )
+    .catch(
+      error => {
+        console.log(error)
+      }
+    );
     axios
       .get("http://localhost:8080/api/client/clients?key=" + this.state.key)
       .then((response) => {

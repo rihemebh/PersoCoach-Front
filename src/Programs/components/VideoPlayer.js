@@ -1,6 +1,6 @@
 import React from "react";
 import { AvForm, AvField } from "availity-reactstrap-validation";
-import video from "../video.mp4";
+import video from "../../assets/videos/video.mp4";
 import {
   Modal,
   Row,
